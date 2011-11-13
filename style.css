@@ -1,0 +1,250 @@
+/* ---------------- Layout */
+
+#container {
+	width: 800px;
+	text-align: left;
+}
+
+#center {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#footer {
+	clear: both;
+}
+
+.twocol {
+	width: 380px;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.fourcol {
+	width: 185px;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.clr {
+	clear: both;
+}
+
+/* ---------------- Styling */
+
+body {
+	background-color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+table {
+	font-size: 100%;
+	border-collapse: collapse;
+}
+th {
+	font-weight: normal;
+	background-color: #f0f0f0;
+}
+
+#header {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 14pt;
+	font-weight: bold;
+	font-family: Georgia, "Times New Roman";
+}
+
+#header #nav {
+	width: 800px;
+	border-bottom: 1px solid #000000;
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	padding-left: 10px;
+	padding-right: 30px;
+}
+
+#header #nav td {
+	padding: 0;
+	text-align: center;
+}
+
+#header #nav td#headdesc {
+	font-size: 10pt;
+	color: #808080;
+	padding-left: 10px;
+}
+
+#header td a {
+	display: block;
+	text-decoration: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0;
+	color: #808080;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-weight: bold;
+}
+#header td a.active {
+	color: #ffffff;
+	background-color: #0060b0;
+}
+#header td a:hover {
+	color: #404040;
+	background-color: #c0c0c0;
+}
+#header td a.active:hover {
+	color: #f4f4f4;
+	background-color: #505050;
+}
+
+#footer {
+	width: 800px;
+	font-size: 8pt;
+	text-align: right;
+	margin-top: 5ex;
+	padding: 1ex 10px 5px 10px;
+	border-top: 1px solid #c0c0c0;
+}
+
+/* ---- links */
+
+a:link {
+	text-decoration: underline;
+	color: #101010;
+}
+a:visited {
+	text-decoration: underline;
+	color: #101010;
+}
+a:hover {
+	text-decoration: underline;
+	color: #000000;
+	background-color: #e0e0e0;
+}
+
+/* ---- headings */
+
+h2, h3, h4 {
+	clear: both;
+	color: #0060b0;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	font-family: Georgia, "Times New Roman";
+}
+
+h2 {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+h3 {
+	margin-top: 3ex;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+h4 {
+	margin-top: 1.5ex;
+	font-size: 12pt;
+	font-weight: normal;
+}
+
+h2 a, h2 a:hover, h2 a:visited, h3 a, h3 a:hover, h3 a:visited, h4 a, h4 a:hover, h4 a:visited {
+	text-decoration: none;
+	color: white;
+}
+
+h2 a:hover {
+	text-decoration: underline;
+	background-color: #303030;
+}
+h3 a:hover {
+	text-decoration: underline;
+	background-color: #404040;
+}
+h4 a:hover {
+	text-decoration: underline;
+	background-color: #808080;
+}
+
+/* ---- misc styles */
+
+p {
+	text-align: left;
+}
+
+img {
+	border-width: 0px;
+}
+
+.normal {
+	text-align: left;
+}
+
+.small {
+	font-size: 80%;
+}
+
+.smaller {
+	font-size: 80%;
+}
+
+.number {
+	text-align: right;
+}
+.gray {
+	color: #808080;
+}
+.good1 {
+	background-color: #80ff80;
+}
+.good2 {
+	background-color: #b0ffb0;
+}
+.good3 {
+	background-color: #e0ffe0;
+}
+
+pre, tt, code {
+	font-family: "Lucida Console", Monaco, "Courier New";
+	font-size: 11px;
+}
+
+pre {
+	background-color:#f4f4f4;
+	border:1px solid #cccccc;
+	padding:5px;
+	margin:3px 10px 3px 10px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}
+
+/* ---- news list */
+
+dl.news dt {
+	width: 7em;
+	float: left;
+	margin: 0;
+	padding: 0;
+	font-style: italic;
+}
+/* commented backslash hack for mac-ie5 \*/
+dt { clear: both; }
+/* end hack */
+
+dl.news dd {
+	width: 70%;
+	float: left;
+	margin: 0;
+	padding: 0;
+}

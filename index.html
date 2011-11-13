@@ -1,0 +1,38 @@
+<? $title = 'Home'; $section = 'home'; $basedir=''; include 'common/head.php'; ?>
+
+<p></p>
+
+<img src="img/logo-aras-124.png" alt="Aras"/>
+I'm <span title='in ascii: Aras Pranckevicius'>Aras Pranckevièius</span>. I can read and write code.<br/>
+<a href="http://unity3d.com"><img src="img/logo-unity-124.png" alt="unity"/></a>
+<a href='http://unity3d.com'>Unity</a> is what I work on.<br/>
+<a href="http://www.nesnausk.org"><img src="img/logo-nesnausk-124.png" alt="nesnausk"/></a>
+<a href="http://www.nesnausk.org">nesnausk!</a> is my demoscene stuff.<br/>
+
+<div class="clr"></div>
+<p></p>
+
+<div class="twocol">
+<h2>Updates &nbsp;<a href='rss-news.php' rel="alternate" type="application/rss+xml"><img src='img/feed16.png' alt="feed" title="Feed" style="vertical-align:bottom;border:0" /></a></h2>
+<dl class="news">
+<?
+include 'common/news.php';
+foreach( $mNews as $n ) {
+	print '<dt>' . $n[0] . '-' . $n[1] . '-' . $n[2] . '</dt><dd>' . $n[3] . '</dd>';
+}
+?>
+</dl>
+</div>
+
+<div class="twocol">
+<h2>Contents</h2>
+
+<p><a href="blog"><b>Technical blog</b></a> and <a href="http://twitter.com/aras_p"><b>me on Twitter</b></a>.</p>
+<p><a href="texts/index.html"><b>Articles and talks</b></a> on 3D, graphics etc.</p>
+<p>Free time <a href="proj.html"><b>programming projects</b></a>.</p>
+<p><a href="blogas">Life blog</a> (Lithuanian). Some older
+	stuff is <a href="relyzai01.html">here</a>.</p>
+<p>My <a href="cv.html">Curriculum Vitae</a>.</p>
+</div>
+
+<? include 'common/foot.php'; ?>

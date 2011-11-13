@@ -1,0 +1,116 @@
+<? $title = 'Project - Sizer'; $section='proj'; $basedir=''; include 'common/head.php'; ?>
+
+<h2>Sizer - executable size breakdown <i>(2007)</i></h2>
+
+<p>
+Command line tool that reports size of things (functions, data, classes, templates, object files) in a Visual Studio compiled exe/dll. Extracts info from debug information (.pdb) file.
+</p>
+<p>
+Based on code by Fabian "ryg" Giesen (<a href='http://farbrausch.com/~fg/'>farbrausch.com/~fg</a>).
+</p>
+
+<h3>Download</h3>
+<p>
+Version 0.1.3 <a href="files/sizer/Sizer-0.1.3.zip"><b>here</b></a> (53 KB). Includes executable, source and project file for Visual Studio 2003.
+</p>
+
+<h3>Usage</h3>
+<ol>
+<li>Compile your executable with Visual Studio, with symbol database (.pdb).</li>
+<li>Run <tt>Sizer.exe &lt;path-to-exe-file&gt;</tt> from command line. Optionally redirect stdout to a file.</li>
+<li>Output is a text file that lists functions, aggregated templates, data, classes/namespaces and object files, sorted by size, largest to smallest.</li>
+</ol>
+<p>
+It requires either having Visual Studio 2003/2005 to be installed, or having <tt>msdia71.dll</tt> or <tt>msdia80.dll</tt> in Sizer's folder on in path. Since I'm not sure what
+are distribution terms of msdia*.dll, I'm not including it in the download. It looks like <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=32bc1bee-a3f9-4c13-9c99-220b62a191ee&DisplayLang=en">VS2005 redist</a>
+does contain the dlls.
+</p>
+<p>Output will look like this:</p>
+<pre class='listing'>
+Functions by size (kilobytes):
+    3.37: _input                                             input.obj
+    2.04: _woutput                                           woutput.obj
+    1.99: _output                                            output.obj
+    1.51: CWnd::OnWndMsg                                     wincore.obj
+    1.47: ATL::AtlIAccessibleInvokeHelper                    wincore.obj
+    1.17: TZip::Add                                          XZip.obj
+    1.05: __strgtold12                                       strgtold.obj
+    1.02: GetOpenGLInfo                                      BugSystemInfo.obj
+    1.00: crc_table                                          &lt;no objfile&gt;
+    0.98: CWnd::FilterToolTipMessage                         tooltip.obj
+    0.93: __crtLCMapStringA                                  a_map.obj
+    0.93: Uploader::DoUpload                                 Uploader.obj
+    <i>...more</i>
+
+Aggregated templates by size (kilobytes):
+    1.58 #    3: std::vector::_Insert_n
+    0.79 #    8: std::basic_string::append
+    0.53 #    6: std::basic_string::assign
+
+Data by size (kilobytes):
+   10.46: __NULL_IMPORT_DESCRIPTOR                           OPENGL32.dll
+    6.00: _afxMsgCache 	wincore.obj
+
+BSS by size (kilobytes):
+    4.00: _bufin                                             * Linker *
+
+Classes/Namespaces by code size (kilobytes):
+   74.54: &lt;global&gt;
+   11.43: CWnd
+    3.68: Uploader
+    <i>...more</i>
+
+Object files by code size (kilobytes):
+   17.37: wincore.obj
+   13.05: XZip.obj
+    8.82: Dlg.obj
+    4.02: Uploader.obj
+    3.88: BugSystemInfo.obj
+    <i>...more</i>
+
+Overall code:   142.77 kb
+Overall data:    52.75 kb
+Overall BSS:      4.00 kb
+</pre>
+</p>
+
+<h3>Changelog</h3>
+<pre>
+0.1.3, 2008 01 17
+  aras: fixed a crash on some executables (IDiaSymbol2::get_type may return S_FALSE). Reported by Ivan-Assen Ivanov.
+  aras: print a dot for each 1000 symbols read. Some executables spend ages inside DIA dlls.
+
+0.1.2, 2008 01 14
+  ryg: added support for VC8.0 DIA DLL
+  ryg: added support for loading DIA DLLs that are not registered (drop msdia*.dll into app folder)
+  ryg: split up "data" report into data and BSS (uninitialized data) sections
+  ryg: fixed some size computations
+  aras: strip whitespace from symbol names (often happens with templates)
+
+0.1.1, 2008 01 13
+  aras: improved error messages
+  aras: removed unused source files
+
+0.1, 2008 01 13
+  initial release
+</pre>
+
+
+<h3>Notes</h3>
+<ul>
+<li>The results are only as good as the information you put in. If you compile without debug information, the PDB will only contain
+relatively rough info about public symbols and not much else. For example, data declared static will be reported as belonging to
+the nearest public symbol - it's stored like that in the PDB, and there's no way of getting more detailed information. So if
+you see something weird, like a 14k uninitialized array that you know for a fact is only 1k big, what's happened is that all
+the uninitialized data following that symbol has been attributed to it. Compile your executable <i>with debug symbols on</i>
+(they don't blow up the size, since everything is in a separate PDB file).</li>
+<li>The sizes reported are raw, uncompressed sizes. Most application installers will compress the executable, and compression may vary wildly depending on the code itself.</li>
+<li>On some executables it takes ages to read the PDB information - often it can read 10000 symbols in a second, but on some executables it takes a minute or two. I don't
+quite know why; profiler says all the time is spent in DIA dll.</li>
+</ul>
+
+
+<br />
+
+
+<? include 'common/foot.php'; ?>

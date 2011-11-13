@@ -1,0 +1,532 @@
+<? $title = 'Ávairûs'; $section = 'blog'; $basedir=''; include 'common/head.php'; ?>
+
+<p>
+<a href="relyzai01.html">Atgal á "pamàstymø" puslapá</a>
+</p>
+
+<H2>Ávairûs pamàstymai (2002-2003)</H2>
+
+
+<h4 id="20031229">2003 12 29</h4>
+<p>
+Dar ðiek tiek magistrinio tema (pradþià þr. <a href="#20031205">þemiau</a>). Taigi, ðiek tiek "kûrybiðko tweakinimo" SH aproksimacijai; ðiek tiek optimizacijos
+pixel shader'iams, ir gana daug "kûrybiðko" poþiûrio á ðeðëlius (<i>"plono stulpo ðeðëlio nëra? gerai - stulpas plonas, ðeðëlis nesvarbus! globalus apðvietimas uþ
+dykà!"</i> :)). Rezultatas - atrodo kiek geriau, klaidø maþiau (arba jas vëlgi - kûrybiðkai paslepiam).
+</p>
+<p>
+Kad palygint greitá ir vaizdà, ðiaip sau padariau ir standartinius <i>shadow-depth-map</i> ðeðëlius (<i>floating point cubemap</i>'as vienam ðviesos ðaltiniui).
+Per daug su jais neþaidþiau (taigi nepadariau nei <i>closer-percentage</i> filtravimo, nei nieko - dël to ir juose "laipteliai" visokie matosi).
+</p>
+<p>
+Taigi, lyginam: virðuje standartiniai cubemap'ai, apaèioje ðitas mano gaidulis (kaip nors gudriai já galima pavadint...):<br>
+<A href="img/lsh/031229-a-smap256.jpg"><img src="img/lsh/tn/031229-a-smap256.jpg"></A>
+<A href="img/lsh/031229-b-smap256.jpg"><img src="img/lsh/tn/031229-b-smap256.jpg"></A>
+<A href="img/lsh/031229-c-smap256.jpg"><img src="img/lsh/tn/031229-c-smap256.jpg"></A>
+<A href="img/lsh/031229-d-smap256.jpg"><img src="img/lsh/tn/031229-d-smap256.jpg"></A>
+<A href="img/lsh/031229-e-smap256.jpg"><img src="img/lsh/tn/031229-e-smap256.jpg"></A><br>
+<A href="img/lsh/031229-a-localSH.jpg"><img src="img/lsh/tn/031229-a-localSH.jpg"></A>
+<A href="img/lsh/031229-b-localSH.jpg"><img src="img/lsh/tn/031229-b-localSH.jpg"></A>
+<A href="img/lsh/031229-c-localSH.jpg"><img src="img/lsh/tn/031229-c-localSH.jpg"></A>
+<A href="img/lsh/031229-d-localSH.jpg"><img src="img/lsh/tn/031229-d-localSH.jpg"></A>
+<A href="img/lsh/031229-e-localSH.jpg"><img src="img/lsh/tn/031229-e-localSH.jpg"></A>
+</p>
+<p>
+Turiu dar keletà idëjø, kaip dar kà nors "kûrybiðkai" padaryt... Reikës pabandyt :)
+</p>
+
+<h4 id="20031228">2003 12 28</h4>
+<p>
+Kartais pagalvoju - visai gerai, kad dar uþtaikiau á laikmeèio, kol nebuvo 3D spartintuvø, galà. Turët ðioká toká supratimà, kaip ir kas "tenais" vyksta, yra visai
+neblogai. Dar geriau - suprasti, <i>kodël bûtent taip</i> kaþkas vyksta. Netgi labai paprastus dalykus geriau yra suprasti - kad nenutiktø, pvz., z-buferis
+(<i>"na... panaikina nematomus daiktus!"</i>) arba bi-linear filtravimas (<i>"ðitas gi... sulieja tekstûras!"</i>).
+</p>
+<p>
+Èia aiðku panaðø á nostalgijà <i>oldskool</i> laikams... Bet kai ið tikro þinai, kad, pvz., paprasèiausiai tekstûrà ant daugiakampio rankomis uþdët yra ne taip
+jau paprasta (tais laikais ir masteliais netgi "labai daug skaièiavimø" tam reikëjo), tai ir 3D spartintuvams didesnë "pagarba" atsiranda, o ir ðiaip geriau.
+</p>
+---
+<p>
+Manau, kad tikras (<i>in-depth</i>) supratimas, <i>kaip, kas ir kodël</i> yra daroma, reikalingas praktiðkai visur. Kadangi be programavimo nieko daugiau
+neiðmanau (o ir programavimo - neitin), tai pavyzdþiai bus ið to. Tarkim, dabar turi .NET, programuoji su C#, keletu kodo eiluèiø gali uþkrovinët milþiniðkus XML
+dokumentus arba kvietinët web servisus - tikrai atrodo, kad esi smarkiai atsiribojæs nuo þemo lygio detaliø. Bet - kaþkada ateina toks momentas, kai kas nors
+pradeda veikti lëtai, naudoti daug atminties ir t.t. Tada reikia kaþkaip suprasti ne tik tai, kad diiidelio XML parsinimas su DOM vien tam, kad vienà elementà paþiûrët,
+yra "nelabai naudingas"; ir ne tik tai, kokiø parametrø perdavimas RPC kiek atsieina.
+</p>
+<p>
+Netgi .NET programuotojam, tarkim, reikia þinoti, kas yra "locality of reference", kaip veikia CPU keðas, kodël kartais geriau padaryti 10x daugiau operacijø tam, kad
+sutaupyti pusæ atminties kreipiniø (detaliau:
+<a href="http://blogs.gotdotnet.com/jangr/commentview.aspx/2d2d1604-5511-4313-842e-51dbde3fe5fd">èia</a> ir
+<a href="http://blogs.gotdotnet.com/ricom/PermaLink.aspx/c5e117b6-8f8c-4e07-b941-c6fa4d3413d8">èia</a>). Aiðku, tai low-level detalës, kad ir
+koks high-level .NETas bebûtø :(
+</p>
+--
+<p>
+Tas pats ir su grafika - praëjus "að nupaiðiau piramidæ! o dabar nupaiðysiu tekstûruotà piramidæ!!!" periodui, kaþkada reikia suprasti, kur ir kas "tenais" vyksta.
+Negali tiesiog daryt <i>glVertex</i> ir tikëtis, kad "OpenGL pasirûpins!" [kaþkodël daþnas dar pamini, kad "OpenGL state machine" èia yra gerai - prie ko èia
+"state machine", að po ðiai dienai nesuprantu]. Èia nevarau ant OpenGL - visur tas pats. <i>Turi</i> þinoti, kas ið tikro vyksta, ir <i>kaip</i> kaþkà padaryt tokiu
+bûdu, kuris bûtø patogiausias aparatûrai.
+</p>
+<p><i>...atrodo, èia jau kaþkur pradedu kartotis - taigi matyt uþteks :)</i></p>
+
+<h4 id="kasyrakas">2003 12 28</h4>
+<p>
+Ne á temà - maþas þaislas <a href="kasyrakas.php">"<b>Kas Yra Kas Lietuvoje</b>"</a>. Ðtai kà naudingo galima nuveikti, kol vyksta <i>online chat</i>'as su bosu :)
+</p>
+
+<h4>2003 12 25</h4>
+<p>
+<span style="float: right">
+<A href="img/img1196.jpg"><img src="img/tn/img1196.jpg"></A>
+</span>
+Geras knygas reikia pradët skaityt nuo maþens - <a href="http://www.shaderx2.com">ShaderX^2</a> pakliuvo á Martos rankas :)
+</p>
+<p>
+Ok, tai nëra kokia nors super-fundamentali knyga (t.y. jos turbût neverta pirkt, jei "noriu 3D iðmokt!"). Bet yra tikrai neblogø dalykø. O jei dar ir uþ dykà
+gauni - tai negi neimsi?
+</p>
+<p>
+Dabar reik þiûrët, ar að patsai papulsiu á <a href="http://www.shaderx3.com">ShaderX^3</a>, ar ne... Jei labai labai greitai kà nors gero sugalvosiu, tai,
+þiû, dar gal ir du kartus papulsiu :)
+</p>
+
+<h4 id="20031205">2003 12 05</h4>
+<p>
+Pastaruoju metu galvojau apie ðeðëlius, lokalø apðvietimà, sferines harmonikas ir kitoká briedà, þodþiu, apie savo magistro darbà. Sugalvojau toká dalykà: tarkim,
+turim statinæ scenà, ir norim dinaminiø ðviesos ðaltiniø. Taip pat norim ðeðëliø, pageidautina "minkðtø", ir nenorim naudot áprastø metodø kaip kad <i>shadow
+volumes</i> arba <i>shadow maps</i>.
+</p>
+<p>
+Darom taip: daugelyje scenos pavirðiaus taðkø (virðûnëse, tarkim) apskaièiuojam ið-ten-matomo-atstumo funkcijà. T.y. funkcija (pusëje) sferos pavirðiaus, kur f-jos
+reikðmë - kiek ið tos vietos "matosi" ta kryptimi. Dabar, renderinant kiekvienà taðkà, reikia paþiûrët, koks atstumas ið taðko ðviesos ðaltinio kryptimi -- jei maþesnis nei
+atstumas iki paèio ðviesos ðaltinio, vadinasi, taðkas yra ðeðëlyje.
+</p>
+<p>
+Problema: reikia kaþkaip saugoti tas matomo-atstumo funkcijas daugelyje taðkø. Kad taðkø daug, tai nëra labai didelë bëda (deðimt ar ðimtas tûkstanèiø, koks
+skirtumas :)). Bëda - kaip jas saugoti, ir dar taip, kad galëtum labai greitai rasti f-jos reikðmæ norima kryptimi. Kolkas að f-jas aproksimuoju sferinëmis
+harmonikomis <i>(SH)</i>, 5-tos eilës -- taigi f-jai saugoti reikia 25 skaièiukø. Taèiau 5-tos eilës SH, sakyèiau, nelabai gerai aproksimuoja tas funkcijas :(
+</p>
+<p>
+Kolkas rezultatas atrodo maþdaug taip (~27 tûkstanèiai virðûniø, 25 komponentø SH f-ja kiekvienai virðûnei, trys spalvoti dinaminiai ðviesos ðaltiniai,
+naudoja <i>pixel shader 2.0</i>, veikia ~60FPS ant Radeon9800Pro, taigi lëtai):<br>
+<a href="img/lsh/shot01.jpg"><img src="img/lsh/tn/shot01.jpg"></a>
+<a href="img/lsh/shot02.jpg"><img src="img/lsh/tn/shot02.jpg"></a>
+<a href="img/lsh/shot03.jpg"><img src="img/lsh/tn/shot03.jpg"></a>
+<a href="img/lsh/shot04.jpg"><img src="img/lsh/tn/shot04.jpg"></a>
+<a href="img/lsh/shot05.jpg"><img src="img/lsh/tn/shot05.jpg"></a>
+<a href="img/lsh/shot06.jpg"><img src="img/lsh/tn/shot06.jpg"></a><br>
+Ðeðëliai vietomis atrodo gana gerai, bet vietomis ir labai blogai :(
+</p>
+<p>
+Taip pat, SH aproksimavimo klaidos ið arti (ðeðëlis ant sienos, ðeðëlis ant stulpo prie lempos, ðeðëlis ant grindø po lempa):<br>
+<a href="img/lsh/shotbug01.jpg"><img src="img/lsh/tn/shotbug01.jpg"></a>
+<a href="img/lsh/shotbug02.jpg"><img src="img/lsh/tn/shotbug02.jpg"></a>
+<a href="img/lsh/shotbug03.jpg"><img src="img/lsh/tn/shotbug03.jpg"></a>
+</p>
+<p>
+Dabar galvoju, kà èia galima bûtø padaryt. Viktoras Jucikas man sako, kad reikia naudot <i>waveletus</i>, mol, gal bus geriau. Bièeliai ið Stenfordo irgi naudojo
+<i>waveletus</i> ðiek tiek susijusia tema (<A href="http://graphics.stanford.edu/papers/allfreq/">All-Frequency Shadows Using Non-linear Wavelet
+Lighting Approximation</a>), ir sako, kad tai geriau uþ SH... Tai kà, dabar man dar ir <i>waveletus</i> iðmokt reikia? :)
+</p>
+<p>
+Pabaigai: ðiek tiek fun: jei tiesiog sumuoji SH koeficientus á spalvos kanalus be jokios aiðkios prieþasties, gaunasi gana graþios pastelës:<br>
+<a href="img/lsh/fun02-shsum.jpg"><img src="img/lsh/tn/fun02-shsum.jpg"></a>
+<a href="img/lsh/fun01-shsum.jpg"><img src="img/lsh/tn/fun01-shsum.jpg"></a><br>
+O va kaip viskas atrodo <i>in wireframe</i> (t.y. reikia daug virðûniø, kur laikyt matomo-atstumo f-jas):<br>
+<a href="img/lsh/wireframe.png"><img src="img/lsh/tn/wireframe.jpg"></a><br>
+Aj, dar bandþiau pasikonsultuot su þmonëmis ið <i>gd-algorithms</i> konferencijos visu ðituo klausimu. Na, iðvadø jokiø nebuvo :), ir pati diskusija dar á konferencijos
+archyvus, rodos, nesuplaukë -- bet jinai turëtø <a href="http://sourceforge.net/mailarchive/forum.php?forum_id=6188">bûti uþ keleto dienø èia</a>
+(tema "Occlusion maps for local lights via SH?").
+</p>
+
+<h4>2003 11 03</h4>
+<p>
+Kà gi - rodos, kad laimëjau ATi/Beyond3D "ðeideriø" konkursà. Netikëta, bet visai malonu :)
+Ðiek tiek þemiau mëtæsi paveikslëliai ir yra ið jo, t.y. demkës-ðeiderkës <a href="projShaderey.html">Shaderey</a> - galit jà parsisiøsti ir þiûrët, jei tik ji veiks.
+</p>
+
+<h4>2003 10 09</h4>
+<p>
+Kartais, kai paskaitau kokius nors þaidimø <i>review</i>'us, arba kokias nors diskusijas vieno ar kito þaidimo/"variklio" klausimu, vis aptinku maþdaug toká:
+<i>"naudojamas Super Turbo variklis, palaikantis Tuos ir Anuos efektus ar fyèerus"</i>. Ir tai pristatoma kaip variklio "pliusas". Juokinga!
+</p>
+<p>
+Ið principo, bet koks "variklis" tave gali tik riboti. Grafikos pavyzdys: imam <i>plain</i> DX9 - ir turim visas priemones, kokiomis tik galime pasiekti spartintuvà.
+Turim visø ámanomø technologijø palaikymà, apskritai <i>viskà</i>. Reiðkia, galim realizuoti bet kokius efektus ar "fyèerus". Dabar, jei pradedam ant to lipdyti "variklá",
+tai automatiðkai kaþkà abstrahuojam. Varikliai tam ir yra, kad tave atitolintø nuo þemo lygio detaliø, kaþkiek abstrahuotø no to, kas ið tikro vyksta, ir ðiaip
+palengvintø darbà. Taèiau neiðvengiamai abstrakcijos procese kaþkas prarandama - kaþko padaryt nebeiðeina (variklis neleidþia!), arba kaþkà padaryt tampa net sunkiau
+(reikia apeiti variklio apribojimus!). Taigi, galimybiø poþiûriu, grafinis variklis gali <i>tik riboti</i>.
+</p>
+<p>Èia panaðu á Joel'io <A href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">Law of Leaky Abstractions</A>...</p>
+<p>
+Aiðku, varikliai paslepia þemo lygio detales, ðiaip daug kà palengvina - tai gerai. Bet kai kità kartà man rodysit variklá, geriau iðvardykit jo apribojimus, o ne
+"kà jis palaiko" :)
+</p>
+
+
+<h4>2003 08 30</h4>
+<p>
+<span style="float: right">
+<A href="img/stuff030830a.jpg"><img src="img/tn/stuff030830a.jpg"></A>
+<A href="img/stuff030830c.jpg"><img src="img/tn/stuff030830c.jpg"></A><br>
+<A href="img/stuff030830b.jpg"><img src="img/tn/stuff030830b.jpg"></A>
+<A href="img/stuff030830d.jpg"><img src="img/tn/stuff030830d.jpg"></A>
+</span>
+Paskutiniai - kas gi vis dëlto tai yra, galima pamatyti paveikslëliø virðuje :) Dabar - lauksim, ir þiûrësim, kas gi bus!
+</p>
+
+<h4>2003 08 28</h4>
+<p>
+<span style="float: right">
+<A href="img/stuff030828a.jpg"><img src="img/tn/stuff030828a.jpg"></A>
+<A href="img/stuff030828c.jpg"><img src="img/tn/stuff030828c.jpg"></A><br>
+<A href="img/stuff030828b.jpg"><img src="img/tn/stuff030828b.jpg"></A>
+<A href="img/stuff030828d.jpg"><img src="img/tn/stuff030828d.jpg"></A>
+</span>
+Dar keletas - atrodo gana baisiai! Ypaè <i>wireframe</i>'u...
+</p>
+<p>
+Tai va, atrodo baisiai, o vyksta ten daug (na, nelabai daug) <i>funky</i> dalykø:
+<ul>
+<li>gerai uþsislëpæs <i>"atmospheric light scattering"</i> (dël jo dangus yra dangaus spalvos, ir kiti daiktai nublanksta, tipo),</li>
+<li><i>"image space edge detection"</i> (juodos linijos, pagal gylio skirtumus ir normaliø skirtumus),</li>
+<li>taip pat kaþkas keisto su spalvom - að konvertuoju ið RGB á HSV, tuo paèiu kvantuoju HSV komponentes, tada kaþkaip
+(gana bjauriai) iðdarkau S ir V komponentes, tada atgal á RGB. Ðità vietà dar reikia taisyt, idant atrodytø ne per daug klaikiai :)</li>
+</ul>
+Kitkas vis dar tas pats - ðeðëliai, trikampiai (dabar jau apie milijonas vienam kadrui vietomis bûna :)), ir t.t.
+</p>
+
+<h4>2003 08 17</h4>
+<p>
+<span style="float: right">
+<A href="img/stuff030817a.jpg"><img src="img/tn/stuff030817a.jpg"></A>
+<A href="img/stuff030817b.jpg"><img src="img/tn/stuff030817b.jpg"></A>
+</span>
+Ðiaip paveikslëlis ið to, kà ðiuo metu bandau daryti - kad ir kas tai bebûtø :)
+</p>
+<p>
+Nieko áspûdingo - kokis tai terrain'as (apie pusë milijono trikampiø), kelios tekstûros ant jo, kaþkiek pseudo medþiø (jie turi taip atrodyti :)), ir paprasti projektuoti
+ðeðëliai, nuo medþiø einantys ant terrain'o. Aiðku, ðeðëliai dinaminiai - ðviesos ðaltinio kryptá galima keist kaip nori...
+</p>
+<p>
+Sunkiausia èia padaryt, kad ðeðëliai per daug blogai neatrodytø - að naudoju vienà 1024x1024 tekstûrà visiem ðeðëliam - supaiðau á jà visus medþius, tada projektuoju
+ant þemës. Á tekstûrà paiðoma maþdaug tiek, kiek mato þiûrovas (ant viso terrain'o uþdëta tekstûra bûtø ryðkiai per maþos rezoliucijos), taigi jam judant plotas, kuriam
+"skiriamas" ðeðëlis, pastoviai keièiasi. Va èia ir iðlenda - po truputá keièiantis tam plotui, ðeðëliø pikseliai baisingai pradeda matytis (nors að ir naudoju pseudo-anti-alias
+ðeðëliams, t.y. paskaitau ið tekstûros keturis kartus su kiek kitomis koordinatëmis). Na, bet galø gale viskas dabar gerai - reikia tà "ðeðëliuojamà" plotà kvantuot tokiu
+þingsniu, kuris lygus vienam shadow map'o tekseliui. Va :)
+</p>
+<p>
+Dar - ið antro shot'o matyt, kad terrain'as neturi jokio LOD'o (tik cull'inami gabalai, kurie á vaizdà nepatenka). Að padariau paprastà GeoMipMapping'à, bet praktiðkai
+kolkas jo neprireikë - kolkas daþniau visvien stabdo ne trikampiø kiekis, o pikseliø kiekis...
+</p>
+
+
+<h4>2003 07 08</h4>
+<p>
+<span style="float: right">
+<A href="img/cvfx1.png"><img src="img/tn/cvfx1.jpg"></A>
+</span>
+Èia ið darbo, projekto "CvFX" (ne, nVidia anei 3dfx èia neprieko :)) - toks <i>entertainment</i> projektas, kur stovi prieð kameras, o ið tavæs rodo "fokusus".
+Èia vienas ið paprastø - <i>half-toning</i> (ATI, GDC2003) ir <i>edge detection</i>, abu realizuoti viename pixel shaderyje 2.0 (galima ir senesniame,
+bet nebuvo reikalo). Veikia >100FPS ant paprastojo Radeon9500.
+</p>
+<p>
+Èia að ir klaviatûra, kaip tik alt-printscreen paspaudimo momentu :)
+</p>
+
+
+<h4>2003 06 17</h4>
+<p>
+<span style="float: right">
+<A href="img/cloth/030614-4.jpg"><img src="img/cloth/tn/030614-4.jpg"></A>
+<A href="img/cloth/030614-5.jpg"><img src="img/cloth/tn/030614-5.jpg"></A>
+</span>
+BRDF "spiria á rimtà subinæ"! Deðinëje - atlasas <i>(satin)</i> ir aksomas/atlasas <i>(velvet/satin)</i>; su identiðku <i>mesh</i>'u ir dviem tokiais paèiais kryptiniais
+ðviesos ðaltiniais. Renderint tokius realiuoju laiku pigiau grybo - du maþuèiai <i>cubemap</i>'ai (vienà reikia du kartus dët, kità vienà) ir nieko daugiau.
+Ir atrodo pusëtinai, ne kaip plastmasinis <i>Phong</i> - mano akim þiûrint, atlasas á tikrà atlasà panaðus; o aksomo po ranka neturëjau, kad palyginti :)
+</p>
+<p>
+Èia, jei kà, pagal McCool et al. "Homomorphic Factorizations of BRDFs for High-Performance Rendering", SigGraph 2001
+(<A href="http://www.cgl.uwaterloo.ca/Projects/rendering/Papers/homomorphic.pdf">PDF</A>). Ir, taip, èia <a href="cloth.html">mano bakalauro</a>
+dalis - ryt ginsiuos.
+</p>
+
+
+<h4>2003 05 21</h4>
+<p>
+Neseniai:
+"<A href="http://www.kompiuterija.lt/cgi-bin/kompiuterija/forumas/topic_show.pl?tid=15138">lietuviðkos informacijos apie 3d varikliuko programinima</A>"...
+Lietuviðkos! Na jau...
+</p>
+<p>
+Kad nëra - faktas. Kodël nëra - geras klausimas :) Matyt, nëra, nes niekam nereikia, arba niekas nemoka/tingi paraðyt. Arba (turbût tai teisingiausia) ir tas, ir tas.
+</p>
+----
+<p>
+Dalykas, kuris "spiria á rimtà subinæ" DirectX9 - tai "effect framework" (ID3DXEffect ir t.t.). Naudoji - ir vargo nematai, ir praktiðkai turi viskà (kas tiesiogiai lieèia
+renderinimà), ko reikia. Pvz., po <A href="jam2log.html">LTGameJam2003</A> kai kas ið dalyviø manæs klausinëjo
+"o kaip ten paiðymas vyksta? turbût labai sudëtingai?". O ið tikro ten nieko nëra, ir pats paiðymo kodas turbût kokius 5-10% viso kodo apimties sudaro, ir ten taip
+nuoseklu ir aiðku viskas...
+</p>
+<p>
+Turbût (tik turbût) ID3DXEffect netinka "labai rimtiems" dalykams (na, normaliems þaidimams), bet pradþiai - super.
+</p>
+
+
+<h4>2003 04 20</h4>
+<p>
+Kuo toliau, tuo labiau manyje stiprëja ásitikinimas, kad visi <i>"games programmer wannabe"</i>
+per daug dëmesio skiria grafikai. Að pats, beje, irgi :) Èia ypaè taip pagalvojau paskaitæs
+<A href="http://www.mif.vu.lt/~vysa1570/gamedev/article01.html">Vytauto Ðaltenio straipsnelá</A>
+- ten viskas teisybë, bet pradedama nuo grafikos.
+</p>
+<p>
+Grafika - oras; jai visai suprast reikia tik truputëlio smegenø ir netingët straipsniø skaityt (SigGraph,
+GDC, t.t.), kad neatsiliktum nuo gyvenimo. 3D plokðèiø veikimo principai paprasti iki bukumo, 90% visø
+"prijomø" ir algoritmø þinomi jau deðimtmeèius, nekurios grafinës API irgi paprastesnës nei DuKartDu.
+Vienu þodþiu, grafikai "daug karmos turëti" nereikia.
+</p>
+<p>
+Kas kita yra visa likusi dalis - pirmiausia pats þaidimas, po to ðalutiniai efektai (Bus fizikos modeliavimas -
+koks, kodël ir kaip tai veiks? Kaip su þaidimu tinkle? Kaip ir kodël pats þaidimas bus padarytas?). Na, á
+ðiuos klausimus að irgi ieðkau atsakymo - jei kas nors þinot, praneðkit :) Að galiu manyt, kad þinau, kaip daroma
+grafika, bet kaip suþinot, kaip daromi þaidimai (arba: kaip <i>turëtø</i> bûti daromi þaidimai)?
+</p>
+----
+<p>
+Va, pribûriau, kaip "grafika yra gaidys", tai dabar reikia vël apie 3D...
+<a href="http://research.microsoft.com/~ppsloan/">Peter-Pike Sloan</a> iðmislai (minëjau kaþkur èia jau)
+labai ir labai ádomu, reiktø kada nors pabandyt kà nors ta tema sukept. "Kada nors", aiðku, vël tas
+hipotetinis momentas - "kai bus laiko"...
+</p>
+<p>
+Að ásivaizduoju, kad galima bûtø áprastus <i>lightmap</i>'us pabandyt pakeist ðitais stebuklais -
+tikriausiai reikëtø pagrindinæ geometrijà suskaidyt á daugiau trikampiø (bet trikampiai ðiais laikais nemokami)
+ir kiekvienoje virðûnëje laikyti sferiniø harmonikø koeficientus (arba CPCA skaièiukus). Tada ið esmës gautume
+kaþkà tarpinio tarp <i>lightmap</i>'ø ir per-vertex dinaminio apðvietimo. Hm, galbût tai nelabai tiktø itin
+maþoms patalpoms arba arti esantiems ðviesos ðaltiniams; bet turëtø tikt kokiai nors katedrai, pro kurios
+langus/vitraþus ðvieèia besikeièianti ðviesa :) Arba, dar geriau - iðorës scenoms.
+</p>
+<p>
+Dar kita idëja - iðplësti tai, kà nVidia darë GeForceFX demoðkei "Ogre". Ið jø GDC2003 prezentacijos
+"Ogres and Fairies: Secrets of the NVIDIA Demo Team" (berods <A href="http://developer.nvidia.com/docs/IO/4449/SUPP/GDC2003_Demos.pdf">èia</A>)
+galima suprast, kai kiekvienai ogro modelio virðûnei jie buvo paskaièiavæ "occlusion term" - na, jos apðviestumà.
+Dar tikriausiai per anksti apðviestumà (1 skaièius) pakeist sferinëm harmonikom (tarkim, 25 skaièiai), bet ta
+diena turbût artëja.
+</p>
+----
+<p>
+<span style="float: right"><A href="img/bzhykt2.jpg"><img src="img/tn/bzhykt2.png"></A></span>
+Dar viena mane persekiojanti idëja: turiu átarimà (átariu bites), kad "<A href="projBzhykt.html">Bþykt</A>" vaizdà
+galima iðgauti kitu, galbût geresniu, bûdu. Net nepamenu, kas sugalvojo, kaip padaryt tuos "spalvotus brûkðnius" -
+berods, tai buvau að :) Blogiausias dalykas su jais - kad supaiðius viskà á maþà tekstûrà, tà tekstûrà reikia atsitempti
+atgal ið video plokðtës, ir pagal jos pikseliø spalvas paiðyt tuos brûkðnius. Ta dalis "atsitempti atgal" ir
+stabdo labiausiai...
+</p>
+<p>
+Galvoju, kad tikriausiai iðeitø supaiðius viskà á tokià pat maþà tekstûrà, vaizdà iðgaut kaip nors gudriai panaudojant
+<i>pixel shader</i>'ius. Pvz., paskaitom tà tekstûrà keliose vietose, jei spalvos skiriasi - tai, <i>e... kaþkaip</i>
+iðgaunam "perëjimà tarp brûkðniø". Panaði idëja, tik þymiai paprastesnë, kaip tik neseniai buvo vienoje ið
+ATI GDC2003 prezentacijø - berods
+<A href="http://www.ati.com/developer/gdc/GDC2003_ScenePostprocessing.pdf">Realtime 3D Scene Post-Processing</A>.
+Ech - ir ðità daiktà reikia imt ir pabandyt kada nors... Kas nors þino planetà, kur paroje yra 64 valandos?
+</p>
+
+
+<h4>2003 04 08</h4>
+<p>
+Visu smarkumu ruoðiuosiu bûsimajam <A href="http://jammy.sourceforge.net">GameJam#2</A> -
+visai sunku; átariu, kad ðiek tiek "per daug" uþsibrëþiau (net lygiø redaktoriø beveik baigiu
+padaryt - siaubas!). Neþinia, kas ið viso to gausis, bet kolkas að savim visai patenkintas, va
+tik kad spëèiau padaryt viskà...
+</p>
+
+<h4>2003 02 27</h4>
+<p>
+Vienas áspûdingiausiø praeitø metø (2002) SigGraph straipsniø buvo
+<i>"Precomputed Radiance Transfer for Real-Time Rendering in Dynamic,
+Low-Frequency Lighting Environments"</i> - straipsná, slaidus ir video galima
+<a href="http://research.microsoft.com/~ppsloan/">rasti èia</a>.
+</p>
+<p>
+Pirmas þingsnis link gero apðvietimo realiuoju laiku; raðydamas "geras"
+turiu omenyje ne "mes turim per-pixel specular'us ir stencil ðeðëlius"
+<i>(primena DoomIII, ane?)</i>, bet kad mes turim ðviesos transporto vaizdavimà -
+ið ten turim ir "minkðtus" ðeðëlius, ir ðviesos atspindþius, t.t. Praktiðkai tà
+patá, kà gauname ir skaièiuodami <i>radiosity</i>. Tik kad mûsø ðviesos gali judëti
+ir visaip kitaip duotis. Kaip <i>lightmap</i>'ai, tik dinaminiam apðvietimui. Gerai!
+</p>
+<p>
+Þiûrint á straipsná, pirma jis kala per smegenis (bent jau man taip buvo), bet kai
+geriau ásiskaitai (arba ilgiau paþiûri ne á straipsná, o á slaidus), tai paaiðkëja,
+kad visa idëja stebëtinai paprasta. Du kart du beveik :)
+</p>
+
+
+<h4>2003 02 27</h4>
+<p><i>O, kokia pauzë buvo :)</i></p>
+<p>
+Krapðtau po truputá <A href="http://jammy.sourceforge.net">GameJam#2</A> "variklá"
+ir jauèiu, kad vël darau klaidà - pradedu daryt viskà "nuo apaèios"... T.y.: padarau
+resursø krovimà, renderinimà, ir t.t. O tada ant to gauto "variklio" bandysiu lipdyt
+"þaidimo variklá".
+</p>
+<p>
+Va èia ir átariu bites - galbût ið tikro pradët daryt nuo paèio þaidimo, ir palaipsniui
+sudët á "variklá" tai, ko reikia ir tokiu bûdu, kad bûtø patogu?
+</p>
+<p>
+Dar bëda - kaip pats þemiausias sluoksnis ("grynasis variklis" - pats sugalvojau :))
+daromas maþdaug ásivaizduoju... Ádomu, kaip reikëtø daryt aukðtesná - "þaidimo variklá"?
+T.y. kaip valdomi þaidimo veikëjai, kaip bendrauja tarpusavyje, t.t. Kas pasakys man?
+</p>
+
+
+<h4>2003 01 11</h4>
+<p>
+Þiûrinëjau DirectX9 - visai gerai. Jis ðiek tiek per anksti iðleistas, nes uþsilikæ
+nemaþai klaidø (apie jas galima paskaityt
+<A href="http://discuss.microsoft.com/archives/DIRECTXDEV.html">DX konferencijoje</A>), dokumentacijoje
+yra klaidø ir kai kas nedokumentuota. Bet ðiaip gerai - beveik kaip DX8, ir
+nemaþai gerø dalykø pridëta.
+</p>
+
+
+<h4>2002 12 26</h4>
+<p>
+"Physically based modeling" kursas
+(<a href="http://www2.pixar.com/companyinfo/research/">èia</a>) yra labai gerai.
+Super slaidai, ir super anotacijos. Visiem, kas domisi fizika/partiklais, bûtina!
+</p>
+
+<h4>2002 12 08</h4>
+<p>
+Darbe kaþkaip atëjo mintis, ar tikrai greitai veikia mûsø <i>3d engine</i> su visu
+jo OOP ir krûva <i>abstraction layer</i>'iø. Ir kà - realiame þaidimo pavyzdyje
+niekas ið paèio variklio á "daugiausia laiko uþimu" topus neáeina! Daugiausia uþima
+pats paiðymas - logiðka...
+</p>
+<p>
+O dar sako, kad OOP stabdo (ar stabdo bent jau ten, kur greièio reikia)... Pas mus
+to OOP net per daug (abstrakcijos ant abstrakcijø... galima turbût bûtø apatinius
+sluoksnius ið viso iðmest, ir niekas nepastebëtø), o átakos greièiui - jokios :)
+</p>
+
+
+<h4>2002 11 21</h4>
+<p>
+Nugirdau mintá, jog <i>"C++ ðiek tiek populiari yra tik todël, jog Microsoft jà
+stengiasi prastumti. Jei taip nebûtø, tai Delphi viskà valdytø."</i> Ádomi mintis,
+nieko nepasakysi :)
+</p>
+<p>
+C++ mane vis labiau stebina. Tikrai kad su ja taip yra: pradþioj manai, kad jos
+nemoki, po kokiø metø manai, jog moki, o po 2-3 metø suvoki, kad në velnio tu C++
+nemoki...
+</p>
+<p>
+Greitas pavyzdys ið <A href="http://spirit.sourceforge.net">Spirit-Phoenix</A>:
+visi þino std::for_each - jis kiekvienam konteinerio elementui vykdo kaþkokià
+funkcijà (t.y. paduotà funktoriaus objektà). Dabar pavyzdys: atspausdinkim
+visus nelygnius STL konteinerio skaièius su for_each:</p>
+<blockquote><pre>
+for_each( c.begin(), c.end(),
+    if_( arg1 % 2 == 1 ) [
+        cout &lt;&lt; arg1 &lt;&lt; ' '
+    ]
+);
+</pre></blockquote>
+<p>Stebëkit, kas pasidaro vidurinëse eilutëse - ið tos "C++ primenanèios" iðraiðkos
+sukonstruojamas <i>funktoriaus objektas</i>, kuris turi <i>operator()</i>, kuris
+savo ruoþtu spausdina lyginius argumentus! Nereikia raðyt jokios naujos klasës su
+"kaþkokiu ten" operatoriumi, etc. C++ naudojamas kaip funkcinio programavimo kalba!
+</p>
+<p>
+Aiðku, galima klaust "kas ið to? mes galim paprastà <i>for</i> ciklà paraðyt!". Taip.
+Tikrai galima ciklà paraðyt. Að pats irgi nelabai suprantu funkcinio programavimo
+prasmæ/naudà (kolkas), bet mane vistiek labai þavi C++ kalba...
+</p>
+
+
+
+<h4>2002 11 12</h4>
+<p>
+Apie tinkamà duomenø konteinerá: testavau <i>particle</i> sistemà: 9000 daleliø,
+kiekviena tik juda pastoviu greièiu, kas sekundæ "numirðta" bei yra sukuriama po
+maþdaug 1500 daleliø. Á GPU puèiama per AGP (kolkas nenaudojant index buferiø),
+<i>fillrate</i> neëda, viskas po AthlonXP1500+ su DDR atmintimi.
+<table border="1">
+<tr>
+	<td>Konteineris</td><td>FPS su viskuo</td><td>FPS atjungus visà pieðimà</td>
+</tr>
+<tr>
+	<td>std::list&lt;PARTICLE*&gt;</td><td>105</td><td>172</td>
+</tr>
+<tr>
+	<td>resizable pool</td><td>162</td><td>395</td>
+</tr>
+<tr>
+	<td>packed array</td><td>205</td><td>488</td>
+</tr>
+</table>
+</p>
+<p>
+Na, jau ið anksto aiðku, kad std::list dalelëms laikyt netinka - baisus iteravimas
+(keðo atþvilgiu), new/delete kiekvienai dalelei, ir t.t.
+</p>
+<p>
+<i>Resizable pool</i> yra paprasto <i>pool</i> idëja, iðplësta iki tiek, kad
+pool'as nëra fiksuotos talpos ir á já sudëti objektai niekada nekeièia savo vietos
+atmintyje. Realizavau taip: kaip sàraðà ið paprastø <i>pool</i>'iukø. Na, o paprastas
+pool'as - tai fiksuoto dydþio masyvas objektams, ir indeksø masyvas. Pagal indeksø
+masyvà áterpimo ir ðalinimo greièiai yra O(1), iteravimas daugeliu atvejø irgi
+<i>cache-friendly</i>. Resizable pool atveju iteravimas yra ðiek tiek sudëtingesnis.
+</p>
+<p>
+<i>Packed array</i> gi yra ið viso paprastas daiktas - tiesiog masyvas. Ðalinant kà
+nors ið vidurio, paskutinis elementas atkopijuojamas á kà tik paðalinto vietà. Taip
+niekada nebûna "skyliø", o ir keðas tiesiog dþiaugiasi, iteruojant per masyvà.
+Realizavau ið viso paprastai, std::vector pagalba (kas papildomai suteikia ir
+kintamà talpà).
+</p>
+<p>
+...tai ðtai, kiek átakoja konteineris. Dar primeskit, kad èia yra ir kitø neoptimaliø
+daliø (keletas virtualiø metodø kiekvienai dalelei, etc.).
+</p>
+
+
+<h4>2002 11 10</h4>
+<p>
+Visgi ádomu, kodël <i>ray-tracing</i> kai kurie þmonës laiko dievu? Kiek mano
+galva neða, jis tinkamas atspindþiams/refrakcijai (o ir tiems ne itin). Tu negali
+padaryt normalaus apðvietimo su raytraceriu. Negali <i>caustics</i>'ø padaryt.
+Negali padaryt ðvytëjimo. Na, ir taip toliau.
+</p>
+<p>
+Taigi, kad raytraceriai yra riboti - faktas. Kad pakankamai lëti - irgi faktas.
+Man ádomu, kodël raytraceriø fanatai nenaudoja kito - riboto, bet greito -
+metodo - paprasto trikampiø pieðimo? Neþino? Nebando?
+</p>
+<p>
+Argumentas, kad "OpenGL/D3D viskà stengiasi vaizduoti greitai", o "raytraceriai
+viska daro akuratniai" - nieko vertas. GL/D3D vaizduoja <i>tekstûruotus
+trikampius</i>, ir vaizduoja juos <i>tiksliai</i> (na, proto ribose :)) - daugiau
+jie nieko nedaro. Greitis yra tiesiog ðiaip, ðalutinis (bet geras) poþymis. O
+kuo tekstûruoti trikampiai nusileidþia spinduliø leidinëjimui? Manau, kad kaip
+ir niekuo... netgi galëèiau teigti, kad ámanoma su GL/D3D sugeneruot <i>toká patá</i>
+vaizdà kaip ir su Pov-Ray, tik su ðalutiniu efektu, jog veiks gerus keliasdeðimt
+kartø greièiau :)
+</p>
+<p>
+Va, tik ðiandien perskaièiau Jensen "Global Illumination using Photon Maps"
+(gëda - taip vëlai!) - tai, IMHO, yra gerai.
+</p>
+<p>
+O ðiaip - man rodos, kad 3D hardwarui nebeliko itin daug kliûèiø iki tikrai gero
+vaizdo - prieð kiek laiko vienintelë bëda buvo maþas tikslumas pikseliuose
+(8 bitai - nekas...), betgi dabar ir ðios bëdos nebeliko.
+</p>
+<p>
+...tai jei viskas gerai, tai turbût nëra blogai, ane?
+</p>
+
+<? include 'common/foot.php'; ?>

@@ -1,0 +1,155 @@
+<? $title = 'Cloth simulation - log'; $section='proj'; $basedir=''; include 'common/head.php'; ?>
+
+<p>
+<A href="cloth.html">Atgal á medþiagos imitavimo puslapá</A>.
+</p>
+
+<H2>Medþiagos imitavimas - ávairûs</H2>
+
+<p><B>2003 01 10</B></P>
+<p>
+<i>God damn implicit integrators!</i> Nieko nesigauna (na, gaunasi, bet stabilumas
+toks pats kaip ir <i>explicit</i>, veikia daug kartø lëèiau, ir kodo þymiai daugiau
+- neprikolkas). Straipsniais nepatikëjæs, net visas iðvestines pats iðsivedþiau
+(o vektoriø iðvestinës vektoriø atþvilgiu visai kala), <i>n</i> kartø tikrinau
+sprendimà, ir t.t. - ir nieko! Nieko gero!
+</p>
+<p>
+Taigi padariau krûvà paprastøjø iðreikðtiniø integratoriø - Oilerio, vidurio taðko
+ir 4 laipsnio Rungës-Kutos. Dabar matyt darysiu susidûrimø tikrinimà, o neiðreikðtiniai
+integratoriai gal patys apsigalvos ir susitvarkys savaime :)
+</p>
+
+
+<p><B>2003 01 04</B></P>
+<p>
+<div style="float: right">
+<A href="img/cloth/030104-1.jpg"><img src="img/cloth/tn/030104-1.jpg"></A>
+<A href="img/cloth/030104-2.png"><img src="img/cloth/tn/030104-2.jpg"></A>
+</div>
+Ehe, iðvestinës tai dar nieko... Kai padarai visas iðvestines, viskà padarai kaip
+reikia, viskà suskaièiuoji ir netgi teisingai, o veikia viskas neteisingai, tai va
+tada jau blogai. Vis niekaip nepriverèiu neiðreikðtinio integratoriaus veikti
+gerai...
+</p>
+<p>
+Na, kol nepriverèiu, tai padariau keletà paveikslëliø su didesne medþiagos
+skiaute, ið 6400 daleliø.
+</p>
+
+
+<p><B>2002 12 30</B></P>
+<p>
+O, iðvestinës, iðvestinës! O, atvirkðtiniø funkcijø galvojimas!
+</p>
+<p>
+Su atvirkðtinëm
+yra taip: yra <i>"sine cardinal"</i> funkcija <i>sinc(x) = sin(x)/x</i>. Man reikia
+jai atvirkðtinës funkcijos (straipsnyje, aiðku, paraðo "atvirkðtinë", o detaliau - ne).
+Kiek suprantu, analitiðkai atvirkðtinë nesusiskaièiuoja, arba/turbût að viskà uþmirðau,
+o Mathcadas man irgi nepadeda.
+</p>
+<p>
+Pakolkas ið lempos sugalvojau aproksimacijà <i>0.502*sqrt(1-x)+0.98*acos(2*x-1)</i> - kaip
+visiðkai ið galvos sugalvotai, visai neblogai :)
+</p>
+
+<p><B>2002 12 28</B></P>
+<p>
+<div style="float: right">
+<A href="img/cloth/021228-1.jpg"><img src="img/cloth/tn/021228-1.jpg"></A>
+<A href="img/cloth/021228-2.jpg"><img src="img/cloth/tn/021228-2.jpg"></A>
+</div>
+Na ðtai, "(un)Stable but Responsive Cloth" jau yra ir veikia. Unstable todël,
+kad kolkas varom tiesiog iðreikðtiniu Oileriu, kas ðiaip jau yra nevalia. Dar
+nëra jokiø susidûrimø tikrinimø, bet vistiek gerai.
+</p>
+
+
+<p><B>2002 12 26</B></P>
+<p>
+"Physically based modeling" kursas
+(<a href="http://www2.pixar.com/companyinfo/research/">èia</a>) yra labai gerai.
+Super slaidai, ir super anotacijos. Visiem, kas domisi fizika/partiklais, bûtina!
+</p>
+
+
+<p><B>2002 11 21</B></P>
+<p>
+Pradëjau þiûrët á MTL ir ITL bibliotekas (Matrix Template Library ir Iterative
+Template Library). Pakol þiûri - labai graþios ir galingos bibliotekos (vëlgi -
+"power of C++" - templeitai valdo!).
+</p>
+
+
+<p><B>2002 11 20</B></P>
+<p>
+Pradëjau kodinti paèià medþiagà (pseudo-frameworkà jau padariau anskèiau). Mieliausiu
+dûðiai bûdu pasirodë besàs K.Choi, H.Ko "Stable but Responsive Cloth" (SigGraph'2002),
+taigi maþdaug jo bûdu ir darau.
+</p>
+<p>
+Jëgø medþiagoje skaièiavimas "pasidarë" stebëtinai lengvai. Pliusas straipsnio
+autoriams, kad neperkrovë matematine notacija, kurios, aiðku, padoriai nebeatsimenu
+(na, straipsnyje mëtosi Jakobianai ant kiekvieno kampo, bet jie ten tik árodymo
+tikslais :)).
+</p>
+<p>
+Aiðku, kad nieko vizualaus dar nematyti (nes dar niekas nepadarë, kad kas nors kà
+nors rodytø)...
+</p>
+
+<p><B>2002 11 17</B></P>
+<p>
+Teoriðkai að turëèiau daryti "medþiagos imitavimas baigtiniø elementø metodu" -
+t.y. <i>"finite elements method"</i> (FEM).
+Praktiðkai gi neimanoma rasti straipsniu apie FEM medþiagai imituoti - visi naudoja
+<i>"interacting particles"</i> (dar vadinama <i>"mass spring system"</i>).
+</p>
+<p>
+Nesu tikras, kad FEM ir MassSpring kuo nors skiriasi (arba jie gali but vienas
+kito subset'ai)... nieko apie FEM neþinau :)
+</p>
+<p>
+Mano durnai galvai atrodo, kad itin didelio skirtumo tarp jø neturëtø bûti - visvien
+yra "kaþkokios" medþiagà apraðanèios lygtys, ir jas pritaikai arba FEM'ui, arba
+mass-spring sistemai. O ðtai kad ið didþiausiø konferencijø per pastaruosius 7
+metus nepasitaikë nei vieno straipsnio "grynai" apie FEM (palyginimui: yra
+deðimtys straipsniø apie mass-spring), jau yra ðioks toks, nors ir subjektyvus,
+rodiklis :)
+</p>
+
+<p><B>2002 11 11</B></P>
+<p>
+Èia bus viskas apie imitavimà "interacting particles" metodu. Taigi, medþiagos
+imitavime yra 3 ið esmës atskiros dalys: 1) jëgø medþiagoje skaièiavimas,
+2) pagal jëgas medþiagos "perneðimas" á sekanèià bûsenà, 3) susidûrimø aptikimas
+ir reagavimas á juos.
+</p>
+<p>
+Kas ádomiausia - daugelis straipsniø 3 dalá daugmaþ ignoruoja <i>("aj, padarom bilekaip,
+vistiek niekam nerûpi")</i>. Kolkas radau vienà naujà straipsná, ið esmës nagrinëjantá
+ðià problemà (o ji ne tokia maþa, kaip atrodo) - Brison, Fedkiw, Anderson "Robust
+Treatment of Collisions, Contact and Friction for Cloth Animation", SigGraph 2002
+(staipsnis lengvai susi-<i>google</i>'ina).
+</p>
+<p>
+Na, o kitos 2 dalys yra straight-forward: pirmoje turi ryðius tarp particl'ø
+ir ið jø pagal susigalvotas lygtis apskaièiuoji jëgas; antroje imi ir integruoji.
+Dabar "ant bangos" yra netiesioginiai <i>(implicit)</i> integratoriai (backward
+euler, implicit midpoint, BDF). Na, èia irgi ðiek tiek matematikos yra, taèiau
+bent jau sprendimo metodai pakankamai plaèiai þinomi ir aiðkûs...
+</p>
+
+<p><B>2002 11 10</B></P>
+<p>
+Ádomu, ar pagaliau bûsiu priverstas <i>ið tikro</i> suþinot, kas yra BRDF? T.y.:
+ar naudosiu BRDF medþiagos renderinimui?
+</p>
+<p>
+...nes kolkas tai kaip ir su daugeliu kitø dalykø: "konceptualiai" þinau, o
+ið tikro - nevisai...
+</p>
+
+
+<? include 'common/foot.php'; ?>
