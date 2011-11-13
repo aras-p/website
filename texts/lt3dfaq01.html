@@ -1,0 +1,152 @@
+<? $title = 'Text - 3D daþnai uþduodami klausimai'; $section = 'text'; $basedir='../'; include '../common/head.php'; ?>
+
+<H2>3D Daþnai Uþduodami Klausimai - 2003 07 16-18</H2>
+<A href="lt3dfaq.html">Atgal á klausimø puslapá</A>.
+
+<H3>Turinys</H3>
+<p>
+<ul>
+<li><A href="#a">Kaip atrodytø þaidimai be vertex-shading proceso apskritai?</a><br>
+<li><A href="#b">Ar svarbià vietà 3D vaizdo formavime atlieka tie shader'iai?</a><br>
+<li><A href="#c">Dël ko veik 99% mano matytø 3D þaidimø yra per daug kampuoti?</a><br>
+<li><A href="#d">Girdëjau, labai efektyvu 3D programose naudoti VertexArray'us, DisplayList'us, CompiledArray'us, ir t.t. Ir ar bûtø galima tais bûdais perduoti tekstûrø duomenis?</ul>
+</a><br>
+</p>
+<br>
+
+<H3>Atsakymai</H3>
+
+
+<p><A name="a"><b>Kaip atrodytø þaidimai be vertex-shading proceso apskritai?</b></a></p>
+<p>
+Esmë yra tokia - galø gale vaizdo plokðtei reikia pateikti primityvø virðûniø koordinates ir kitus parametrus. Kur jie bus apskaièiuoti - tavo asmeninis reikalas.
+Áprasti yra keletas atvejø:
+<ol>
+<li><i>Hardware T&amp;L (transform and lighting)</i> - Apskaièiuoji galutinius virðûniø duomenis ið pradiniø, naudodamas tam keletà (keliolika) ið anksto numatytø skaièiavimo
+	bûdø. Skaièiavimai atliekami vaizdo plokðtës procesoriaus. Gerai tinka vertex shader'iø nepalaikanèioms plokðtëms (&lt;DX8), ir gana daþnai ðito ir tau paèiam uþtenka.</li>
+<li><i>Software T&amp;L</i> - tas pats, tik skaièiavimai atliekami tavo CPU. Ðitai naudoji, jei vaizdo plokðtë nepalaiko 1., arba tau paèiam kaþkodël reikia
+	galutiniø virðûniø duomenø.</li>
+<li><i>Hardware vertex shader</i> - Pats pasiraðai programëlæ, kuri ir apdoroja virðûnës duomenis. Skaièiavimai atliekami GPU. Ðitai naudoji, jei 1./2. neuþtenka, arba
+	dël asmeniniø prieþasèiø (patogiau, religija neleidþia T&amp;L naudoti, t.t.). Kokiem dalykam gali neuþtekti 1./2. - atskiras platus klausimas :) Beje, vertex
+	shader'iø irgi yra visokiausio plauko; ðiuo metu - DX8 lygio 1.1 versija ir DX9 lygio 2.0, 2.0+ ir 3.0 (ðitos dar niekas nepalaiko) versijos.</li>
+<li><i>Software vertex shader</i> - tas pats, tik skaièiavimai atliekami tavo CPU. Ðitai naudoji, jei vaizdo plokðtë nepalaiko 3., arba tau paèiam kaþkodël reikia
+	galutiniø virðûniø duomenø.</li>
+<li><i>Jau transformuotos virðûnës</i> - tais retais atvejais, kai tavo virðûniø duomenø niekaip nebereikia transformuoti, o juos galima tiesiai kiðti gilyn á vaizdo
+	plokðtæ. Èia beveik jokie realûs atvejai nepatenka, iðskyrus galbût visokiø "plokðèiø" dalykø pieðimà (koordinates nurodai ekrano koordinatëmis, taigi ið esmës 2D).</li>
+</ol>
+Kaip matosi, be vertex-shading proceso apsieina tik 5. atvejis - bemaþ visais realiais atvejais kaþkà su virðûnëmis daryti reikia
+(hm... ne tai kad reikia - taip patogiau ir daþnai greièiau, nei 5. atvejá naudoti).
+</p>
+<br>
+
+
+<p><A name="b"><b>Ar svarbià vietà 3D vaizdo formavime atlieka tie shader'iai?</b></a></p>
+<p>
+Na, stebuklø tai jie nedaro tikrai :) Taip pat jie nedaro to, kà nori áteigti jø reklama - t.y. nedaro super-duper spec. efektø, tikroviðkø veido animacijø, ðeðëliø, atspindþiø
+ir taip toliau.
+</p>
+<p>
+Viskas daug proziðkiau:
+<ul>
+<li>Vertex shader'is - tai programa, kuri vykdoma kiekvieno primityvo kiekvienai virðûnei. Ið ateinanèiø duomenø (kurios kaþkur padeda programa/þaidimas) jinai
+	apskaièiuoja iðeinanèius duomenis. Tai ir viskas, ir tai gana ribotas ir paprastas modelis. Pvz., vykdant vertex shader'á, tu þinai tik "dabartinës" virðûnës duomenis (neþinai nieko
+	apie gretimas virðûnes, t.t.). Na, kur èia reklamos "tikroviðkos veido animacijos"? :)</li>
+<li>Pixel shader'is - tai programa, kuri vykdoma kiekvienam vaizduojamam taðkui (tiksliau: fragmentui). Joje gali nuskaityt keletà spalvø ið keletos tekstûrø, ir
+	atlikti aritmetines operacijas su tomis spalvomis. Na, ir dar ðiek tiek... Vëlgi - èia tiesiogiai niekur nefigûruoja nei ðeðëliai, nei atspindþiai...</li>
+</ul>
+Beje, ankstesnieji pixel shader'iai (1.1-1.3, t.y. tie, kurios palaiko GeForce3, GeForce4Ti, Xabre ir Parhelia) ið tikro net nëra tikros "programëlës" - ið tikro tai ðiek tiek
+iðplësti "register combiners" (kurie jau ir GeForce2 yra). Tai va...
+</p>
+<p>
+Aiðku, shader'iai nëra blogai - tai yra priemonë kontroliuoti daliai vaizdo plokðtës darbo (paraðai programà, kuri vykdoma GPU). Ir kartais bûna tokia situacija, kai
+prieð-shader'inio funkcionalumo neuþtenka kaþkam atlikti - tada gali pasiraðyti savo shader'á, kuris tai ir daro, ko tau reikia. Taip pat daþnai bûna situacija, kai ir dabartiniø
+shader'iø neuþtenka kaþkam atlikti :)
+</p>
+<p>
+Beje, "shader" pavadinimas kiek blogai atspindi jo prasmæ - daug geriau OpenGL naudojami terminai "vertex program" ir "fragment program". Bet jie, matyt, taip gerai
+reklamai netinka :) Þiûrësim, koks lietuviðkas terminas atsiras -- kaþkur maèiau "ðeðëliuoklë", taigi galbût mes irgi klaidingai vadinsim...
+</p>
+<br>
+
+
+<p><A name="c"><b>Dël ko veik 99% mano matytø 3D þaidimø yra per daug kampuoti?</b></a></p>
+<p>
+Dël to, kad naudojama maþai trikampiø modeliams apraðyti... O kodël maþai trikampiø - tam yra gana daug prieþasèiø:
+<ul>
+<li>PC þaidimas turi veikti su visokiausiomis vaizdo plokðtëmis - t.y. nuo visokiø integruotø iki Radeon9800. Krûva ðiø plokðèiø neturi galimybës transformuoti
+	virðûnës aparatûriðkai (HW T&amp;L) - pvz., ðiuo metu naujausia Intel integruota vaizdo plokðtë vis dar neturi T&amp;L... o Intel turi 50% vaizdo plokðèiø
+	rinkos. Taigi virðûnes turi transformuoti CPU, kuris ir taip daþnai turi kà veikti þaidime (nustatyti susidûrimus, skaièiuoti þaidimo veikëjø logikà, animacijas, t.t.) --
+	taigi galime sau leisti ne itin daug virðûniø...</li>
+<li>
+	Aukðtesnës problemos sprendimas galëtø bûti - naudoti keletà versijø kiekvieno modelio (detalizuota, maþiau detalizuota, t.t.). Praktiðkai taip yra daroma, tik ðiek tiek
+	kitaip (maþai detalizuota, dar maþiau detalizuota, t.t. :)). Sukurti labiau detalizuotas versijas uþima laiko (o jo visada trûksta), jos uþima vietà ir t.t. -- taigi dauguma
+	ir nesistengia.
+</li>
+<li>
+	Daþnai þaidimai naudoja gana senus "variklius", kurie buvo sukurti dar þiloje senovëje - o tuomet ir pajëgumai buvo kitokie. Pvz., QuakeIII variklis vis dar naudojamas,
+	nors buvo sukurtas prieð pat atsirandant T&amp;L (taip, jis gali já naudoti, bet optimaliam iðnaudojimui reikëtø perraðyti visà variklá).</li>
+</li>
+<li>
+	Turbût dar kaþka uþmirðau...
+</li>
+</ul>
+</p>
+<br>
+
+
+<p><A name="d"><b>Girdëjau, labai efektyvu 3D programose naudoti VertexArray'us, DisplayList'us, CompiledArray'us, ir t.t. Ir ar bûtø galima tais bûdais perduoti tekstûrø duomenis?</b></a></p>
+<p>
+Pirmiausia geriau iðsiaiðkinti, kaip bûtent veikia vaizdo plokðtë -- tada ir optimalûs programavimo bûdai natûraliai paaiðkës :)
+Taigi, kaip apdorojami geometrijos duomenys (pirma klausimo dalis - bûtent apie juos):
+</p>
+<p>
+Geometrija apdorojama labai paprastai - primityvø (trikampiø) virðûniø duomenys yra kaþkur atmintinëje; o grafinë plokðtë tik gauna komandas, ið katros vietos
+kiek primityvø pieðti. Natûraliai aiðkëja optimalumo pasiekimo priemonës: 1) duomenis padëti á tinkamiausià atmintinës vietà, 2) duomenis keisti kuo reèiau, 3) kiekviena
+grafinës plokðtës komanda padaryti kuo daugiau darbo. Detaliau:
+<ol>
+<li>Vaizdo plokðtei greièiausiai pasiekiama (ðiuo metu - iki 20GB/s) yra lokali jos atmintinë (Video RAM); ðiek tiek blogesnis pasirinkimas -
+	sisteminës RAM AGP sritis (1-2GB/s); ir pats blogiausias - paprasta sisteminë atmintinë (133MB/s). CPU poþiûriu - jam raðyti á bet kokià
+	atmintinæ yra gana gerai (ðiek tiek lëèiau á AGP ir Video RAM). Skaityti ið AGP arba Video RAM visgi yra gana lëtas procesas.<br>
+	Ið ðito daugmaþ aiðku toks dalykas: statinius (t.y. tuos, kurie nesikeièia) geometrijos duomenis geriausia padëti á Video atmintinæ; dinaminius duomenis - á Video
+	atmintinæ arba AGP atmintinæ.</li>
+<li>Tavo pateikiamus geometrijos duomenis vaizdo plokðtë gali visaip juokingai sukonvertuoti á sau patogiausià formatà - uþtad greièiausia yra naudoti statinæ geometrijà.
+	Statinës geometrijos atveju CPU tik vienà kartà uþpildo duomenis, vaizdo plokðtë juos sukonvertuoja á sau patogø formatà ir (daþniausiai) pasideda á Video atmintá
+	(ið kurios ji gali greitai skaityti).<br>
+	Dinaminës geometrijos atveju darbo þymiai daugiau -- ir CPU turi dirbti (t.y. apskaièiuoti ir uþpildyti duomenis), ir grafinë plokðtë turi juos pastoviai konvertuoti;
+	daþnai tokie duomenys bûna AGP atmintinëje (reiðkia, grafinë plokðtë ið ten lëèiau skaito). Taip pat iðkyla sinchronizacijos problemos -- reikia uþtikrinti,
+	kad CPU nekeis duomenø tuo paèiu metu, kai GPU kaip tik juos skaito.</li>
+<li>Ðitas tiesiogiai su klausimu nesusijæs, bet vistiek :) Ðitai reikðtø, kad viena komanda reikia stengtis nupieðti kuo daugiau. Be to, geriau kuo maþiau kaitalioti
+	vaizdavimo parametrus tarp komandø. Na, èia plati tema...</li>
+</ol>
+</p>
+<p>
+Taigi, optimaliam darbui su geometrija uþtenka visai nedaug priemoniø -- reikia kaþko, atspindinèio geometrijos duomenø krûvà (na, virðûniø masyvà -- tai ir vadinama
+Vertex Buffer arba Vertex Array). Taip pat reikia priemoniø pasakyti, ar kaþkuris virðûniø masyvas bus naudojamas dinaminei, ar statinei geometrijai; bei sinchronizacijos
+priemoniø dinaminës geometrijos atveju.
+</p>
+<p>
+Visos ðios priemonës labai tiesiogiai ir paprastai realizuotos pastarosiose Direct3D bibliotekose (DX7-DX9); taèiau gana ilgai OpenGL'e jø pilnai nebuvo. Berods (nesu OpenGL þinovas)
+jos tik visai neseniai buvo standartizuotos -- t.y. standartinis <i>extension</i> :) -- ARB_Vertex_Buffer_Object. Nemaèiau jo ið labai arti, bet jis berods panaðus á D3D priemones,
+taigi tinka visam darbui su geometrija (t.y. galima pamirðti DisplayList'us, VertexArray'us ir t.t.). Ðioks toks ávadas á já mëtësi prie nVidia GDC2003 straipsniø -
+<A href="http://developer.nvidia.com/docs/IO/4449/SUPP/GDC2003_OGL_BufferObjects.pdf">GDC2003_OGL_BufferObjects.pdf</A>. Beje,
+straipsnius ið nVidia/ATI visada verta paskaityt :) Ir dar beje -- "paprastasis" OpenGL pieðimas glVertex() funkcijomis yra laaaabai neoptimalus variantas :)
+</p>
+<p>
+Trumpai apie paminëtus bûdus - kai kurie ið jø atsirado beveik dinozaurø laikais, ðiuo metu bûtø geriau naudoti ðiuolaikines priemones (þr. aukðèiau). Taigi:
+<ul>
+<li>DisplayList - tai statinë geometrija ir statinës pieðimo ar bûsenos keitimo komandos. Gana keistas konglomeratas
+	(t.y. á vienà vietà suplakta ir geometrija, ir komandos) :)</li>
+<li>VertexArray - virðûniø masyvas, ir tiek. Taèiau neturi sinchronizacijos priemoniø, geometrijos tipo (statinë/dinaminë) nurodymo priemoniø -- vienu þodþiu, kiek
+	nepilnas daiktas (bet trûkstamas vietas galima "prilipdyt" naudojant specifines gamintojø <i>extensions</i>).</li>
+<li>CompiledVertexArray - matyt, statinei geometrijai skirtas -- ið arti ðito nemaèiau.</li>
+</ul>
+Bet kokiu atveju, naujas "standartinis" <i>extension</i> turëtø "padengti" visus kitus bûdus :)
+</p>
+<p>
+Apie tekstûras - ne, anie bûdai yra geometrijos saugojimo/valdymo bûdai. Tekstûros áprastais atvejais saugomos Video atmintinëje, ir tau tik reikia pasirûpinti atvejais,
+kai reikiamos tekstûros nebetelpa ten (tada iðimti seniai naudotas, ir sudëti naujas). Daug apie ðitai neþinau, nes Direct3D pats turi gana gerà automatiná "tekstûrø valdytojà"
+ðiam reikalui :)
+</p>
+<br>
+
+<? include '../common/foot.php'; ?>

@@ -1,0 +1,186 @@
+<? $title = 'Text - 3D daþnai uþduodami klausimai'; $section = 'text'; $basedir='../'; include '../common/head.php'; ?>
+
+<H2>3D Daþnai Uþduodami Klausimai - 2003 07 14</H2>
+<A href="lt3dfaq.html">Atgal á klausimø puslapá</A>.
+
+<H3>Turinys</H3>
+<p>
+<ul>
+<li><A href="#a">Nuo kokiø programiniø dalykø priklauso 3D grafinës plokðtës paiðymo naðumas?</a><br>
+<li><A href="#b">Kuo ið programuotojo taðko þiûrint, skiriasi OpenGL ir D3D?</a><br>
+<li><A href="#c">Kà turi skaièiuot pagrindinis procesorius, ir kà skaièiuoja 3D vaizdo plokðtës procesorius?
+	Kalbu apie situacijà, kai nori gaut apylygá apkrovimà ir nenori, kad vienas ið tø procesoriø lauktø kito.</a><br>
+<li><A href="#d">Ar daþnai programos veikimo metu reikia siøst tekstûras ið pagr. atminties á vaizdo plokðtæ?
+	Nuo ko gali priklausyt tekstûrø siuntimo daþnumas?</a><br>
+<li><A href="#e">Kuo skiriasi ávairiø D3D versijø galimybës, pvz.: 7-tos, 8-tos ir 9-tos?</a><br>
+<li><A href="#f">Ar norint padaryt vidutiniðkà 3D þaidimà tenka naudot daug gijø (threads)? Kokioms uþduotims uþtektø vienos vienintelës gijos?</a><br>
+<li><A href="#g">Kas yra "vertex shader"?</a><br>
+<li><A href="#h">Ar D3D ir OpenGL þaidimuose visi 3D modeliai susideda ið trikampiø?</a><br>
+<li><A href="#j">Kas (ûkiðkai tariant) yra 3D plokðtë? :)</a><br>
+</ul>
+</p>
+<br>
+
+<H3>Atsakymai</H3>
+
+
+<p><A name="a"><b>Nuo kokiø programiniø dalykø priklauso 3D grafinës plokðtës paiðymo naðumas?</b></a></p>
+<p>
+Pagrinde nuo: grafinës plokðtës tvarkykliø optimalumo bei konkreèios programos/þaidimo optimalumo. Taip pat priklauso nuo akivaizdþiø ðalutiniø faktoriø:
+tuo paèiu metu veikianèiø kitø programø, operacinës sistemos, kompiuterio pajëgumo :) ir t.t.
+</p>
+<p>
+Vienok, grafiniø plokðèiø tvarkyklës paprastai yra gana gerai padarytos (ir pastoviai tobulinamos), taigi pagrindinis faktorius yra konkreti programa.
+Èia galimybiø daug - galima gerai iðnaudoti vaizdo plokðtæ, o galima ir ne :)
+</p>
+<br>
+
+
+<p><A name="b"><b>Kuo ið programuotojo taðko þiûrint, skiriasi OpenGL ir D3D?</b></a></p>
+<p>
+Tai atskiros, bet á (daugmaþ) tà patá funkcionalumà orientuotos bibliotekos. Didþiausias programuotojo poþiûriu skirtumas turbût yra: OpenGL pateikiama kaip
+C funkcijø krûva, D3D pateikiamas kaip COM interfeisø krûva. Mano subjektyvia nuomone, ðitas skirtumas gana minorinis...
+</p>
+<p>
+Kiti skirtumai yra daugiau filosofinio pobûdþio ir daþnai sukelia religinius ginèus. Pvz.:
+<ul>
+<li>OpenGL stengiasi smarkiai iðlaikyti atgaliná suderinamumà, ko pasekoje ðiuo metu turime deðimties metø senumo bibliotekà. D3D gi vos ne su kiekviena
+	karta yra radikaliai perdaromas, kad kuo labiau atspindëtø tuo metu egzistuojanèius vaizdo spartintuvus. Kas geriau, nuspræskit patys :)</li>
+<li>D3D "gamina" Microsoft, OpenGL teoriðkai yra atviras standartas (nors praktiðkai já ðiuo metu "gamina" 3DLabs :))</li>
+<li>...ir t.t.</li>
+</ul>
+Ðiuo metu mano subjektyvusis protas yra uþ D3D9 - jis paprasèiausiai geresnis :)
+</p>
+<br>
+
+
+<p><A name="c"><b>Kà turi skaièiuot pagrindinis procesorius, ir kà skaièiuoja 3D vaizdo plokðtës procesorius?
+	Kalbu apie situacijà, kai nori gaut apylygá apkrovimà ir nenori, kad vienas ið tø procesoriø lauktø kito.</b></a></p>
+<p>
+Ðiuo metu (DX7-DX9 karta) vaizdo plokðtës moka pieðti trikampius (ir nieko daugiau!). Aiðku, trikampius pieðia gana greitai
+(padori DX9 plokðtë - 100 mln. trikampiø per sekundæ), ir galima naudoti krûvas visokiausiø trikampiø pieðimo parametrø (tekstûros,
+virðûniø transformacijos programos <i>aka vertex shaders</i>, fragmentø apdorojimo programos <i>aka pixel shaders</i> ir t.t.).
+</p>
+<p>
+Taigi, trumpai galima pasakyti - vaizdo plokðtë pieðia tekstûruotus trikampius, o pagrindinio procesoriaus tikslas yra padëti trikampiø ir tekstûrø
+duomenis á labiausiai tam tinkamà vietà, nustatinëti pieðimo parametrus ("nuo ðiol pieði su ðita tekstûra!"), ir pasakyti vaizdo plokðtei, kad jau reikia kaþka pieðti
+("pieðk ðituos 10000 trikampiø!").
+</p>
+<p>
+Aiðku, pagrindinis procesorius gali skaièiuot ir kaþkà ið vaizdo plokðtës darbo - bûtent, trikampiø virðûniø transformacijas
+(tai galima pavadinti T&amp;L arba vertex shader). Kitus darbus teoriðkai procesorius atlikti galëtø, bet greitis bûtø labai jau apgailëtinas... Virðûniø transformacijø
+atveju CPU gali per sekundæ apskaièiuot keletà milijonø transformacijø - tai lëèiau, nei vaizdo plokðtë, bet kartais pakanka.
+</p>
+<p>
+Klausimas: kodël CPU skaièiuoja virðûniø transformacijas? Todël, kad vaizdo plokðtë gali to nemokëti (pvz., GeForce4MX nepalaiko vertex shader'iø), arba
+kad paskirstyti apkrovimà tarp CPU ir GPU (pvz., dalá virðûniø transformuoja GPU, dalá CPU - kai kuriose situacijose tai gali apsimokëti). Taip pat bûna atvejø,
+kad transformuotø virðûniø reikia ir kitiems tikslams (ne tik vaizdavimui), pvz., susidûrimø tikrinimui. Tokiu atveju CPU nori ar nenori turi virðûnes transformuot.
+</p>
+<p>
+Kaip optimaliai paskirstyti apkrovimà tarp CPU ir GPU - èia labai plati tema, ir gana gerai bûna paaiðkinta plokðèiø gamintojø dokumentuose (nVidia/ATI turi labai
+gerø dokumentø). Pagrindiniai principai bûtø: padëti duomenis á labiausiai tinkamas vietas, kuo daugiau darbo atlikti "vienu ypu" ir nedaryti nieko kvailo :)
+</p>
+<br>
+
+
+<p><A name="d"><b>Ar daþnai programos veikimo metu reikia siøst tekstûras ið pagr. atminties á vaizdo plokðtæ?
+	Nuo ko gali priklausyt tekstûrø siuntimo daþnumas?</b></a></p>
+<p>
+Geriausia, kai tekstûros yra "padëtos" vaizdo plokðtës atmintinëje. Taigi idealus atvejis - ten pradþioje padedamos visos reikiamos tekstûros, ir tada naudojamos
+belekiek laiko. Tokiu idealiu atveju atsakymas - "nedaþnai" :)
+</p>
+<p>
+Taèiau tekstûrø duomenø gali bûti daug, arba vaizdo plokðtë gali turëti gana maþai atmintinës. Tuomet iðkyla situacijos, kai "visos" tekstûros netelpa á atmintinæ.
+Tokiu atveju stengiamasi, kad vaizdo plokðtëje bûtø ðiuo metu naudojamos tekstûros (t.y. tos, kuriu prireiks ðiam kadrui vaizduoti). Taip galima pasiekti, kad, tarkim,
+keletà sekundþiø tekstûrø á vaizdo plokðtæ siøsti nereikia.
+</p>
+<p>
+Gali iðkilti situacija, kai net vienam kadrui reikiamos tekstûros netelpa á vaizdo plokðtës atmintinæ - tuomet jos padedamos AGP atminties srityje ir per AGP
+magistralæ GPU jas "traukia" pas save. Ði situacija jau gali bûti pakankamai bloga, nes AGP pralaidumas (AGP4X - apie 1GB/s, AGP8X - apie 2GB/s) þymiai maþesnis
+uþ vidinës vaizdo plokðtës magistralës pralaidumà (Radeon9700Pro - apie 20GB/s).
+</p>
+<p>
+Nuo ko visa tai priklauso - nuo tekstûrø kiekio, tekstûrø dydþio (pvz., 2048x2048 uþima 64 kartus daugiau atminties nei 256x256 tekstûra) bei tekstûrø formato (pvz.,
+32 bitø RGBA tekstûroje - 4 baitai vienam taðkui; DXT3 kompresuotoje tekstûroje - 1 baitas vienam taðkui).
+</p>
+<br>
+
+
+<p><A name="e"><b>Kuo skiriasi ávairiø D3D versijø galimybës, pvz.: 7-tos, 8-tos ir 9-tos?</b></a></p>
+<p>
+Geriausia - paimti visas jas ir tiesiog paþiûrëti, kuo jos skiriasi :)
+</p>
+<p>
+Esminës D3D kartø ypatybës atspindi to meto 3D spartintuvø ypatybes:
+<ul>
+<li>DX7 atneðë trikampiø virðûniø transformacijø skaièiavimà GPU pagalba (Hardware T&amp;L), kubo iðklotinës tekstûras (cube-maps), paprastà apðvietimo
+	kiekvienam fragmentui skaièiavimà (gali apskaièiuot skaliarinæ sandaugà kiekvienam taðkui - "dot3") bei keletà tekstûravimo spec. efektø (EMBM ir kt.).</li>
+<li>DX8 atneðë virðûniø ir fragmentø apdorojimo programas (vertex, pixel shaders), tûrines tekstûras ir keletà kitø minoriniø dalykø.</li>
+<li>DX9 atneðë "geresnes" virðûniø/fragmentø apdorojimo programas, ávedë slankaus kablelio skaièiavimus kiekvienam fragmentui, slankaus kablelio tekstûrø
+	formatus, virðûniø keitimà pagal tekstûras (displacement mapping) ir keletà kitø dalykø.</li>
+</ul>
+</p>
+<p>
+Greta to, su kiekviena D3D karta pateikiama vis didesnë ir geresnë papildoma biblioteka D3DX, kuri tiesiogiai su grafine plokðte nesusijusi - tai tiesiog pagalbiniø
+priemoniø rinkinys (pvz., matematinës f-jos, paveiksliukø skaitymo f-jos, ir t.t.). Viena geresniø DX8 D3DX ypatybiø buvo "effects framework" - karkasas
+vaizdavimo parametrams apraðyti tekstinio formato bylose. DX9 já dar pagerino (pvz., ávedë aukðto lygio virðûniø/taðkø programø kalbà HLSL).
+</p>
+<br>
+
+
+<p><A name="f"><b>Ar norint padaryt vidutiniðkà 3D þaidimà tenka naudot daug gijø (threads)? Kokioms uþduotims uþtektø vienos vienintelës gijos?</b></a></p>
+<p>
+Praktiðkai visoms su grafika susijusioms uþduotims uþtenka vienos gijos (aiðku, plokðtës tvarkyklë, arba grafinës bibliotekos kodas gali veikti ir atskirose gijose,
+bet nuo programuotojo tai nepriklauso).
+</p>
+<p>
+Gali bûti atvejø, kai keletas gijø turi kaþkoká pranaðumà, bet tai daþnai bûna tiesiogiai su grafika nesusijæ atvejai (pvz., ilgà fizikiniø procesø skaièiavimà galima "paleisti"
+atskira gija - bet nebûtina :)).
+</p>
+<br>
+
+
+<p><A name="g"><b>Kas yra "vertex shader"?</b></a></p>
+<p>
+Vaizduojamo primityvo (daþniausiai trikampio) virðûnës apdorojimo programa. Nei daugiau, nei maþiau :)
+</p>
+<p>
+Ði programa vykdoma kiekvienai vaizduojamai virðûnei; á jà ateina kaþkoks kiekis duomenø, ji suskaièiuoja kaþkiek rezultatø, ir skaièiavimà gali átakoti kaþkiek skaièiø "ið ðalies"
+(vadinamø konstantomis). Tai gana ribotas modelis, pvz., vertex shader pagalba negalima sukurti ar paðalinti virðûniø - galima tik kaþkaip transformuoti ateinanèius duomenis
+á iðeinanèius rezultatus.
+</p>
+<p>
+Vertex shader'is turi apskaièiuoti galutinæ virðûnës pozicijà vadinamojoje "clipping" erdvëje, taip pat gali apskaièiuoti keletà (iki dviejø) spalvos reikðmiø ir keletà (berods iki 8)
+tekstûros koordinaèiø. Kokiu bûdu tai apskaièiuojama - jau paèio vertex shader reikalas. Daþniausiai virðûnës pozicija gaunama, koordinatæ "pasaulio" erdvëje
+dauginant ið objekto galutinës transformacijos matricos; tekstûrø koordinatës arba apskaièiuojamos kokiu nors paprastu bûdu, arba pateikiamos kaip ateinantys
+duomenys.
+</p>
+<p>
+Galimø virðûnës transformavimo bûdø yra daug, bet ið esmës tai ir iðlieka tik virðûniø transformavimas. Vertex shader'is stebuklingai nesukuria ástabiø vaizdø,
+nevaizduoja tikroviðkø emocijø ir t.t. :)
+</p>
+<br>
+
+
+<p><A name="h"><b>Ar D3D ir OpenGL þaidimuose visi 3D modeliai susideda ið trikampiø?</b></a></p>
+<p>
+Teoriðkai - nebûtinai, praktiðkai - taip, ið trikampiø. Dabartinës vaizdo plokðtës nieko kito vaizduoti nemoka, iðskyrus trikampius. Taigi, bet kuris modelis
+vaizdavimui turi bûti paverèiamas trikampiø krûva.
+</p>
+<p>
+Aiðku, pats modelis gali bûti apraðytas ir ne trikampiais (o, tarkim, Bezjë skiautëmis - gerai tinka kreiviems pavirðiams), taèiau tuomet programa/þaidimas turi
+já paversti trikampiais vaizdavimui (naudojant savo priemones, arba grafinës bibliotekos teikamas priemones). Pagrinde dël to daþniausiai modeliai jau ið karto
+bûna trikampiai, o alternatyvios formos naudojamos tik iðimtinais atvejais.
+</p>
+<br>
+
+
+<p><A name="j"><b>Kas (ûkiðkai tariant) yra 3D plokðtë? :)</b></a></p>
+<p>
+Ðiuo metu - aparatûros gabalas, turintis atmintinæ, procesoriø (GPU), magistralæ, vaizduoklio iðvadus ir t.t.
+Kà jinai moka - greitai vaizduoti tekstûruotus trikampius; su krûva reguliuojamø parametrø, kurie átakoja vaizdavimà. Tai praktiðkai ir viskas :)
+</p>
+<br>
+
+
+<? include '../common/foot.php'; ?>
