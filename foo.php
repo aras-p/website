@@ -5,7 +5,7 @@
 </HEAD>
 <body>
 
-Persikëlë á <a href="kasyrakas.php">èia</a>...
+<?php phpinfo(); ?>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ Based on code by Fabian "ryg" Giesen (<a href='http://farbrausch.com/~fg/'>farbr
 
 <h3>Download</h3>
 <p>
-Version 0.1.3 <a href="files/sizer/Sizer-0.1.3.zip"><b>here</b></a> (53 KB). Includes executable, source and project file for Visual Studio 2003.
+Version 0.1.4 <a href="files/sizer/Sizer-0.1.4.zip"><b>here</b></a> (74 KB). Includes executable, source and project file for Visual Studio 2008.
 </p>
 
 <h3>Usage</h3>
@@ -21,7 +21,7 @@ Version 0.1.3 <a href="files/sizer/Sizer-0.1.3.zip"><b>here</b></a> (53 KB). Inc
 <li>Output is a text file that lists functions, aggregated templates, data, classes/namespaces and object files, sorted by size, largest to smallest.</li>
 </ol>
 <p>
-It requires either having Visual Studio 2003/2005 to be installed, or having <tt>msdia71.dll</tt> or <tt>msdia80.dll</tt> in Sizer's folder on in path. Since I'm not sure what
+It requires either having Visual Studio 2003/2005/2008 to be installed, or having <tt>msdia71.dll/msdia80.dll/msdia90.dll</tt> in Sizer's folder on in path. Since I'm not sure what
 are distribution terms of msdia*.dll, I'm not including it in the download. It looks like <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=32bc1bee-a3f9-4c13-9c99-220b62a191ee&DisplayLang=en">VS2005 redist</a>
 does contain the dlls.
 </p>
@@ -76,6 +76,10 @@ Overall BSS:      4.00 kb
 
 <h3>Changelog</h3>
 <pre>
+0.1.4, 2010 10 14
+  lucas: convert projectfile to vs2008
+  lucas: add support for reading vs2008 generated pdb's
+
 0.1.3, 2008 01 17
   aras: fixed a crash on some executables (IDiaSymbol2::get_type may return S_FALSE). Reported by Ivan-Assen Ivanov.
   aras: print a dot for each 1000 symbols read. Some executables spend ages inside DIA dlls.
