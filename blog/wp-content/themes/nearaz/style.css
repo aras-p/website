@@ -1,0 +1,549 @@
+/*  
+Theme Name: NeARAZ' blog
+Theme URI: http://aras-p.info/blog
+Description: Theme for NeARAZ' blog
+Version: 0.3
+Author: Aras Pranckevicius
+Author URI: http://aras-p.info
+*/
+
+/* ---------------- Layout */
+
+#container {
+	width: 800px;
+	text-align: left;
+}
+
+#center {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#footer {
+	clear: both;
+}
+
+#left {
+	width: 150px;
+	padding: 0px 10px 0px 0px;
+	min-width: 150px;
+}
+
+/* ---------------- Styling */
+
+body {
+	background-color: #ffffff;
+	margin: 0px;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+table {
+	font-size: 100%;
+}
+
+#header {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 14pt;
+	font-weight: bold;
+	font-family: Georgia, "Times New Roman";
+}
+
+#header #nav {
+	width: 800px;
+	border-bottom: 1px solid #000000;
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	padding-left: 10px;
+	padding-right: 30px;
+}
+
+#header #nav td {
+	padding: 0;
+	text-align: center;
+}
+
+#header #nav td#headdesc {
+	font-size: 10pt;
+	color: #808080;
+	padding-left: 10px;
+	font-weight: normal;
+}
+
+#header td a {
+	display: block;
+	text-decoration: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0;
+	color: #808080;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-weight: bold;
+}
+#header td a.active {
+	color: #ffffff;
+	background-color: #0060b0;
+}
+#header td a:hover {
+	color: #404040;
+	background-color: #c0c0c0;
+}
+#header td a.active:hover {
+	color: #f4f4f4;
+	background-color: #505050;
+}
+
+#footer {
+	width: 800px;
+	font-size: 8pt;
+	text-align: right;
+	margin-top: 5ex;
+	padding: 1ex 10px 5px 10px;
+	border-top: 1px solid #c0c0c0;
+}
+
+/* ---- links */
+
+a, a:link, a:visited {
+	text-decoration: underline;
+	color: #101010;
+}
+a:hover {
+	text-decoration: underline;
+	color: #000000;
+	background-color: #e8e8e8;
+}
+
+/* ---- headings */
+
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	color: #0060b0;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	font-family: Georgia, "Times New Roman";
+	margin-top: 5px;
+}
+
+h2 {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 12pt;
+	font-weight: normal;
+}
+
+h2 a, h2 a:link, h2 a:hover, h2 a:visited, h3 a, h3 a:link, h3 a:hover, h3 a:visited, h4 a, h4 a:link, h4 a:hover, h4 a:visited {
+	text-decoration: none;
+	color: #0060b0;
+}
+
+h2 a:hover {
+	text-decoration: underline;
+	background-color: #e0e0e0;
+}
+h3 a:hover {
+	text-decoration: underline;
+	background-color: #e8e8e8;
+}
+h4 a:hover {
+	text-decoration: underline;
+	background-color: #f0f0f0;
+}
+
+/* ---- WP specific ---- */
+
+#description {
+	color: #404040;
+	font-size: 75%;
+}
+
+
+.alt {
+	background-color: #ececec;
+}
+
+small {
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: 8pt;
+	line-height: 1.5em;
+}
+
+#wp-calendar caption, cite {
+	text-decoration: none;
+}
+
+.commentlist li, #commentform input, #commentform textarea {
+	font: 0.9em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+.commentlist li {
+	font-weight: bold;
+}
+
+.commentlist cite, .commentlist cite a {
+	font-weight: bold;
+	font-style: normal;
+}
+
+.commentlist p {
+	font-weight: normal;
+	line-height: 1.5em;
+	text-transform: none;
+}
+
+#commentform p {
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+.commentmetadata {
+	font-weight: normal;
+}
+.commentmetadata a {
+	color: #808080;
+}
+
+
+small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, strike {
+	color: #808080;
+}
+
+code {
+	font-family: Monaco, "Lucida Console", "Courier New";
+	font-size: 8pt;
+}
+
+acronym, abbr, span.caps
+{
+	font-size: 10pt;
+	letter-spacing: .07em;
+}
+
+#wp-calendar #prev a {
+	font-size: 11px;
+	}
+
+#wp-calendar a {
+	text-decoration: none;
+	}
+
+#wp-calendar caption {
+	font: bold 1.3em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	text-align: center;
+	}
+
+#wp-calendar th {
+	font-style: normal;
+	text-transform: capitalize;
+	}
+
+
+
+/* -------- Begin Structure */
+
+.post {
+	margin: 0 0 40px;
+	text-align: left;
+	}
+
+.postmetadata {
+	clear: both;
+}
+
+.postmetadata a {
+	color: #404040;
+}
+
+
+h2.pagetitle {
+	margin-top: 15px;
+}
+
+h3.comments {
+	padding: 0;
+	margin: 40px auto 20px ;
+}
+
+
+
+/* Begin Images */
+p img {
+	padding: 0;
+	max-width: 100%;
+	}
+
+/*	Using 'class="alignright"' on an image will (who would've
+	thought?!) align the image to the right. And using 'class="centered',
+	will of course center the image. This is much better than using
+	align="center", being much more futureproof (and valid) */
+
+img.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+img.alignright {
+	padding: 4px;
+	border: 1px solid #808080; 
+	margin: 0 0 2px 7px;
+	display: inline;
+	}
+
+img.alignleft {
+	padding: 4px;
+	border: 1px solid #808080; 
+	margin: 0 7px 2px 0;
+	display: inline;
+	}
+
+.alignright {
+	float: right;
+	}
+
+.alignleft {
+	float: left;
+	}
+
+	
+/* ---- WP sidebar */
+
+#sidebar {
+	font-size: 8pt;
+}
+
+#sidebar form {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+#sidebar h2 {
+	font-family: Georgia, "Times New Roman";
+	border: none;
+	color: #0060b0;
+	padding: 2px 0px 2px 0px;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#sidebar h2 a {
+	color: #0060b0;
+}
+#sidebar h2 a:visited {
+	color: #0060b0;
+}
+#sidebar h2 a:hover {
+	color: #000000;
+	background-color: #f0f0f0;
+}
+
+
+#sidebar ul, #sidebar ul ol {
+	margin: 0;
+	padding: 0;
+}
+
+#sidebar ul li {
+	list-style-type: none;
+	list-style-image: none;
+	margin-bottom: 10px;
+}
+
+#sidebar ul p, #sidebar ul select {
+	margin: 5px 0 8px;
+}
+
+#sidebar ul ul, #sidebar ul ol {
+	margin: 5px 0 0 10px;
+}
+
+#sidebar ul ul ul, #sidebar ul ol {
+	margin: 0 0 0 10px;
+}
+
+ol li, #sidebar ul ol li {
+	list-style: decimal outside;
+}
+
+#sidebar ul ul li, #sidebar ul ol li {
+	margin: 3px 0 0;
+	padding: 0;
+}
+
+/* ---- WP Form elements */
+
+#searchform { }
+
+#sidebar #searchform #s {
+	width: 100px;
+	padding: 2px;
+}
+
+#sidebar #searchsubmit {
+	padding: 1px;
+}
+
+.entry form { /* This is mainly for password protected posts, makes them look better. */
+	text-align:center;
+}
+
+select {
+	width: 130px;
+}
+
+#commentform input {
+	width: 130px;
+	padding: 2px;
+	margin: 5px 5px 1px 0;
+}
+
+#commentform textarea {
+	width: 100%;
+	padding: 2px;
+}
+
+#commentform #submit {
+	margin: 0;
+	float: left;
+}
+
+/* ---- WP Comments */
+
+.alt {
+	margin: 0;
+	padding: 10px;
+}
+
+.commentlist {
+	padding: 0;
+	text-align: left;
+}
+
+.commentlist li {
+	margin: 5px 0px 3px 0px;
+	padding: 5px 10px 3px 10px;
+	list-style: none;
+}
+
+.commentlist p {
+	margin: 5px 5px 5px 0px;
+}
+
+#commentform p {
+	margin: 5px 0;
+	font-size: 10pt;
+}
+
+.nocomments {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* ---- WP Calendar */
+
+#wp-calendar {
+	empty-cells: show;
+	margin: 10px auto 0;
+	width: 155px;
+	}
+
+#wp-calendar #next a {
+	padding-right: 10px;
+	text-align: right;
+	}
+
+#wp-calendar #prev a {
+	padding-left: 10px;
+	text-align: left;
+	}
+
+#wp-calendar a {
+	display: block;
+	}
+
+#wp-calendar caption {
+	text-align: center;
+	width: 100%;
+	}
+
+#wp-calendar td {
+	padding: 3px 0;
+	text-align: center;
+	}
+
+#wp-calendar td.pad:hover { /* Doesn't work in IE */
+	background-color: #fff; }
+
+
+/* ---- WP various tags & classes */
+
+acronym, abbr, span.caps {
+	cursor: help;
+	}
+
+acronym, abbr {
+	border-bottom: 1px dashed #999;
+}
+
+blockquote {
+	margin: 10px 30px 0 10px;
+	padding-left: 15px;
+	border-left: 5px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	color: #404040;
+}
+
+blockquote cite {
+	margin: 5px 0 0;
+	display: block;
+}
+
+.center {
+	text-align: center;
+}
+
+hr {
+	display: none;
+	}
+
+a img {
+	border: none;
+}
+
+.navigation {
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.navigation .alignright {
+	padding-bottom: 10px;
+}
+
+.navigation .alignleft {
+	padding-bottom: 10px;
+}
+
+pre {
+	font-family: Monaco, "Lucida Console", "Courier New";
+	font-size: 8pt;
+	overflow: hidden;
+}
