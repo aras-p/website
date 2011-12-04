@@ -1,8 +1,14 @@
 /artefact
-/blog
 /blogas
 /files
 /img/ic05
 /img/photo
 /img/unity
 /scrapbook
+/blog/*.*
+/blog/wp-admin
+/blog/wp-includes
+/blog/wp-content/*.*
+/blog/wp-content/plugins
+/blog/wp-content/uploads
+
