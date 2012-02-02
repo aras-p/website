@@ -352,9 +352,9 @@ If we assume that incoming normal is normalized, then there are methods derived 
 that end up being <i>exactly equivalent</i>:
 <ul>
 <li>Used in Cry Engine 3, presented by Martin Mittring in "A bit more Deferred" presentation
-	(<a href="http://www.crytek.com/fileadmin/user_upload/inside/presentations/2009/A_bit_more_deferred_-_CryEngine3.ppt">PPT link</a>,
-	slide 13). For Unity, I had to negate Z component of view space normal to produce good results,
-	I guess Unity's and Cry Engine's coordinate systems are different. The code would be:
+    (<a href="http://www.crytek.com/sites/default/files/A_bit_more_deferred_-_CryEngine3.ppt">PPT link</a>,
+    slide 13). For Unity, I had to negate Z component of view space normal to produce good results,
+    I guess Unity's and Cry Engine's coordinate systems are different. The code would be:
 <pre>
 half2 encode (half3 n, float3 view)
 {
@@ -372,9 +372,9 @@ half3 decode (half4 enc, float3 view)
 }
 </pre></li>
 <li>Lambert Azimuthal Equal-Area projection
-	(<a href="http://en.wikipedia.org/wiki/Lambert_azimuthal_equal-area_projection">Wikipedia link</a>).
-	Suggested by Sean Barrett in <a href="http://aras-p.info/blog/2009/08/04/compact-normal-storage-for-small-g-buffers/#comment-20223">comments<a>
-	for this article. The code would be:
+    (<a href="http://en.wikipedia.org/wiki/Lambert_azimuthal_equal-area_projection">Wikipedia link</a>).
+    Suggested by Sean Barrett in <a href="http://aras-p.info/blog/2009/08/04/compact-normal-storage-for-small-g-buffers/#comment-20223">comments<a>
+    for this article. The code would be:
 <pre>
 half2 encode (half3 n, float3 view)
 {
@@ -733,11 +733,11 @@ GPU performance comparison in a single table:
 Quality comparison in a single table. PSNR based, higher numbers are better.
 <table border="1">
 <tr><th>Method</th><th>PSNR, dB</th></tr>
-<tr><td>#1: X &amp; Y</td>		<td class='number      '>18.629</td></tr>
-<tr><td>#3: Spherical</td>		<td class='number good3'>42.042</td></tr>
-<tr><td>#4: Spheremap</td>		<td class='number good1'>48.071</td></tr>
-<tr><td>#7: Stereographic</td>	<td class='number good2'>44.147</td></tr>
-<tr><td>#8: Per pixel view</td>	<td class='number      '>38.730</td></tr>
+<tr><td>#1: X &amp; Y</td>      <td class='number      '>18.629</td></tr>
+<tr><td>#3: Spherical</td>      <td class='number good3'>42.042</td></tr>
+<tr><td>#4: Spheremap</td>      <td class='number good1'>48.071</td></tr>
+<tr><td>#7: Stereographic</td>  <td class='number good2'>44.147</td></tr>
+<tr><td>#8: Per pixel view</td> <td class='number      '>38.730</td></tr>
 </table>
 </p>
 
@@ -745,18 +745,18 @@ Quality comparison in a single table. PSNR based, higher numbers are better.
 <a name="changelog"></a>
 <h3>Changelog</h3>
 <ul>
-	<li>2010 03 25: Added Method #8: Per-pixel View Space. Suggested by <a href="http://twitter.com/kayru">Yuriy O'Donnell</a>.</li>
-	<li>2010 03 24: <i>Stop! Everything before was wrong! Old article <a href="CompactNormalStorageOldWrong.html">moved here</a>.</i></li>
-	<li>2009 08 12: Added Method #7: Stereographic projection. Suggested by <a href="http://www.nothings.org/">Sean Barrett</a> and <a href="http://castano.ludicon.com/blog/">Ignacio Castano</a>.</li>
-	<li>2009 08 12: Optimized Method #5, suggested by Steve Hill.</li>
-	<li>2009 08 08: Added power difference images.</li>
-	<li>2009 08 07: Optimized Method #4: Sphere map. Suggested by Irenee Caroulle.</li>
-	<li>2009 08 07: Added Method #6: Lambert Azimuthal Equal Area. Suggested by <a href="http://www.nothings.org/">Sean Barrett</a>.</li>
-	<li>2009 08 05: Added Method #5: Cry Engine 3. Suggested by Steve Hill.</li>
-	<li>2009 08 05: Improved quality of Method #3a: round values in texture LUT.</li>
-	<li>2009 08 05: Added MSE and PSNR values for all methods.</li>
-	<li>2009 08 04: Added Method #3a: Spherical Coordinates w/ texture LUT.</li>
-	<li>2009 08 04: Method #1: <tt>1-dot(n.xy,n.xy)</tt> is slightly better than <tt>1-n.x*n.x-n.y*n.y</tt> (better pipelining on NV and ATI). Suggested by <a href="http://zeuxcg.blogspot.com/">Arseny "zeux" Kapoulkine</a>.</li>
+    <li>2010 03 25: Added Method #8: Per-pixel View Space. Suggested by <a href="http://twitter.com/kayru">Yuriy O'Donnell</a>.</li>
+    <li>2010 03 24: <i>Stop! Everything before was wrong! Old article <a href="CompactNormalStorageOldWrong.html">moved here</a>.</i></li>
+    <li>2009 08 12: Added Method #7: Stereographic projection. Suggested by <a href="http://www.nothings.org/">Sean Barrett</a> and <a href="http://castano.ludicon.com/blog/">Ignacio Castano</a>.</li>
+    <li>2009 08 12: Optimized Method #5, suggested by Steve Hill.</li>
+    <li>2009 08 08: Added power difference images.</li>
+    <li>2009 08 07: Optimized Method #4: Sphere map. Suggested by Irenee Caroulle.</li>
+    <li>2009 08 07: Added Method #6: Lambert Azimuthal Equal Area. Suggested by <a href="http://www.nothings.org/">Sean Barrett</a>.</li>
+    <li>2009 08 05: Added Method #5: Cry Engine 3. Suggested by Steve Hill.</li>
+    <li>2009 08 05: Improved quality of Method #3a: round values in texture LUT.</li>
+    <li>2009 08 05: Added MSE and PSNR values for all methods.</li>
+    <li>2009 08 04: Added Method #3a: Spherical Coordinates w/ texture LUT.</li>
+    <li>2009 08 04: Method #1: <tt>1-dot(n.xy,n.xy)</tt> is slightly better than <tt>1-n.x*n.x-n.y*n.y</tt> (better pipelining on NV and ATI). Suggested by <a href="http://zeuxcg.blogspot.com/">Arseny "zeux" Kapoulkine</a>.</li>
 </ul>
 
 <? include '../common/foot.php'; ?>
